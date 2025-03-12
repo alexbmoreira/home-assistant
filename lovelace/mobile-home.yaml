@@ -1,5 +1,5 @@
 title: Mobile Home
-decluttering_templates: !include decluttering_templates.yaml
+decluttering_templates: !include_dir_merge_named decluttering_templates/
 kiosk_mode:
   hide_header: true
 views:

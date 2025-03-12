@@ -1,0 +1,79 @@
+device_chip:
+  card:
+    type: custom:button-card
+    entity: '[[entity]]'
+    show_label: false
+    show_name: false
+    tap_action:
+      action: toggle
+    hold_action:
+      action: more-info
+    icon: '[[icon]]'
+    state:
+      - value: "on"
+        styles:
+          card:
+            - background: '[[bg_color_on]]'
+          icon:
+            - color: '[[icon_color_on]]'
+    styles:
+      card:
+        - width: 32px
+        - height: 32px
+        - box-shadow: none
+        - background: var(--primary-background-color)
+        - border: none
+        - border: none
+        - margin-right: -5px
+        - margin-bottom: -5px
+      icon:
+        - width: 16px
+        - color: var(--secondary-text-color)
+        - border-radius: 12px
+speaker_chip:
+  card:
+    type: custom:decluttering-card
+    template: device_chip
+    variables:
+      - entity: '[[entity]]'
+      - icon: mdi:speaker
+      - bg_color_on: "#9AC9FE"
+      - icon_color_on: "#449BFE"
+television_chip:
+  card:
+    type: custom:decluttering-card
+    template: device_chip
+    variables:
+      - entity: '[[entity]]'
+      - icon: mdi:television
+      - bg_color_on: "#9AC9FE"
+      - icon_color_on: "#449BFE"
+light_chip:
+  default:
+    - icon: mdi:lightbulb
+  card:
+    type: custom:decluttering-card
+    template: device_chip
+    variables:
+      - entity: '[[entity]]'
+      - icon: '[[icon]]'
+      - bg_color_on: "#FCE6C8"
+      - icon_color_on: "#F99803"
+humidifier_chip:
+  card:
+    type: custom:decluttering-card
+    template: device_chip
+    variables:
+      - entity: '[[entity]]'
+      - icon: mdi:air-humidifier
+      - bg_color_on: "#BEC7EE"
+      - icon_color_on: "#6D81D9"
+fan_chip:
+  card:
+    type: custom:decluttering-card
+    template: device_chip
+    variables:
+      - entity: '[[entity]]'
+      - icon: mdi:fan
+      - bg_color_on: "#91E7F3"
+      - icon_color_on: "#00BCD4"

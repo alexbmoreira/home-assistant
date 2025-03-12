@@ -1,0 +1,117 @@
+living_room_chips:
+  card:
+    type: grid
+    columns: 3
+    cards:
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: custom:decluttering-card
+        template: television_chip
+        variables:
+          - entity: media_player.shield
+      - type: custom:decluttering-card
+        template: speaker_chip
+        variables:
+          - entity: media_player.tv_soundbar
+      - type: custom:decluttering-card
+        template: light_chip
+        variables:
+          - entity: light.couch_lamp
+          - icon: mdi:floor-lamp
+      - type: custom:decluttering-card
+        template: light_chip
+        variables:
+          - entity: light.globe_light
+          - icon: phu:ikea-fado
+bedroom_chips:
+  card:
+    type: grid
+    columns: 3
+    cards:
+      - type: grid
+        cards: []
+      - type: custom:decluttering-card
+        template: light_chip
+        variables:
+          - entity: light.bedside_lamp_pascale
+          - icon: mdi:lamp
+      - type: custom:decluttering-card
+        template: light_chip
+        variables:
+          - entity: light.bedside_lamp_alex
+          - icon: mdi:lamp
+      - type: custom:decluttering-card
+        template: speaker_chip
+        variables:
+          - entity: media_player.bedroom_display
+      - type: custom:decluttering-card
+        template: fan_chip
+        variables:
+          - entity: fan.bedroom_fan
+      - type: custom:decluttering-card
+        template: humidifier_chip
+        variables:
+          - entity: humidifier.humidifier
+kitchen_chips:
+  card:
+    type: grid
+    columns: 3
+    cards:
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: custom:decluttering-card
+        template: speaker_chip
+        variables:
+          - entity: media_player.kitchen_speaker
+      - type: custom:decluttering-card
+        template: light_chip
+        variables:
+          - entity: light.kitchen_lights
+          - icon: mdi:ceiling-light
+bathroom_chips:
+  card:
+    type: grid
+    columns: 3
+    cards:
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: custom:decluttering-card
+        template: speaker_chip
+        variables:
+          - entity: media_player.bathroom_speaker
+office_chips:
+  card:
+    type: grid
+    columns: 3
+    cards:
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: custom:decluttering-card
+        template: light_chip
+        variables:
+          - entity: light.office_lamp
+          - icon: mdi:desk-lamp
