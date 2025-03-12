@@ -1,0 +1,254 @@
+device_chip:
+  card:
+    type: custom:button-card
+    entity: '[[entity]]'
+    show_label: false
+    show_name: false
+    tap_action:
+      action: toggle
+    hold_action:
+      action: more-info
+    icon: '[[icon]]'
+    state:
+      - value: "on"
+        styles:
+          card:
+            - background: '[[bg_color_on]]'
+          icon:
+            - color: '[[icon_color_on]]'
+    styles:
+      card:
+        - width: 32px
+        - height: 32px
+        - box-shadow: none
+        - background: var(--primary-background-color)
+        - border: none
+        - border: none
+        - margin-right: -5px
+        - margin-bottom: -5px
+      icon:
+        - width: 16px
+        - color: var(--secondary-text-color)
+        - border-radius: 12px
+speaker_chip:
+  card:
+    type: custom:decluttering-card
+    template: device_chip
+    variables:
+      - entity: '[[entity]]'
+      - icon: mdi:speaker
+      - bg_color_on: "#9AC9FE"
+      - icon_color_on: "#449BFE"
+television_chip:
+  card:
+    type: custom:decluttering-card
+    template: device_chip
+    variables:
+      - entity: '[[entity]]'
+      - icon: mdi:television
+      - bg_color_on: "#9AC9FE"
+      - icon_color_on: "#449BFE"
+light_chip:
+  default:
+    - icon: mdi:lightbulb
+  card:
+    type: custom:decluttering-card
+    template: device_chip
+    variables:
+      - entity: '[[entity]]'
+      - icon: '[[icon]]'
+      - bg_color_on: "#FCE6C8"
+      - icon_color_on: "#F99803"
+humidifier_chip:
+  card:
+    type: custom:decluttering-card
+    template: device_chip
+    variables:
+      - entity: '[[entity]]'
+      - icon: mdi:air-humidifier
+      - bg_color_on: "#BEC7EE"
+      - icon_color_on: "#6D81D9"
+fan_chip:
+  card:
+    type: custom:decluttering-card
+    template: device_chip
+    variables:
+      - entity: '[[entity]]'
+      - icon: mdi:fan
+      - bg_color_on: "#91E7F3"
+      - icon_color_on: "#00BCD4"
+
+room_card:
+  card:
+    type: custom:button-card
+    name: '[[name]]'
+    icon: '[[icon]]'
+    grid_options:
+      columns: 6
+    show_state: false
+    custom_fields:
+      actions_container:
+        card:
+          type: custom:decluttering-card
+          template: '[[template]]'
+    styles:
+      grid:
+        - grid-template-areas: |
+            "n n s"
+            "i actions_container actions_container"
+        - grid-template-columns: auto auto
+        - grid-template-rows: auto 80px
+      card:
+        - padding: 12px
+        - background: var(--secondary-background-color)
+        - border: none
+        - box-shadow: 0px 1px 8px black
+        - height: 125px
+      custom_fields:
+        actions_container:
+          - justify-self: end
+          - align-self: end
+          - padding-right: 2px
+      name:
+        - justify-self: start
+        - font-size: 18px
+        - font-weight: 700
+        - margin-bottom: 20px
+        - white-space: normal
+        - text-align: start
+        - align-self: start
+      state:
+        - justify-self: start
+        - font-size: 12px
+        - font-weight: 500
+        - opacity: '0.6'
+      img_cell:
+        - position: absolute
+        - background: var(--card-background-color)
+        - bottom: -25px
+        - left: -25px
+        - width: 90px
+        - height: 100px
+        - border-radius: 25px
+      icon:
+        - color: var(--secondary-text-color)
+        - width: 30px
+        - transform: translateX(10px) translateY(-10px)
+
+living_room_chips:
+  card:
+    type: grid
+    columns: 3
+    cards:
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: custom:decluttering-card
+        template: television_chip
+        variables:
+          - entity: media_player.shield
+      - type: custom:decluttering-card
+        template: speaker_chip
+        variables:
+          - entity: media_player.tv_soundbar
+      - type: custom:decluttering-card
+        template: light_chip
+        variables:
+          - entity: light.couch_lamp
+          - icon: mdi:floor-lamp
+      - type: custom:decluttering-card
+        template: light_chip
+        variables:
+          - entity: light.globe_light
+          - icon: phu:ikea-fado
+bedroom_chips:
+  card:
+    type: grid
+    columns: 3
+    cards:
+      - type: grid
+        cards: []
+      - type: custom:decluttering-card
+        template: light_chip
+        variables:
+          - entity: light.bedside_lamp_pascale
+          - icon: mdi:lamp
+      - type: custom:decluttering-card
+        template: light_chip
+        variables:
+          - entity: light.bedside_lamp_alex
+          - icon: mdi:lamp
+      - type: custom:decluttering-card
+        template: speaker_chip
+        variables:
+          - entity: media_player.bedroom_display
+      - type: custom:decluttering-card
+        template: fan_chip
+        variables:
+          - entity: fan.bedroom_fan
+      - type: custom:decluttering-card
+        template: humidifier_chip
+        variables:
+          - entity: humidifier.humidifier
+kitchen_chips:
+  card:
+    type: grid
+    columns: 3
+    cards:
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: custom:decluttering-card
+        template: speaker_chip
+        variables:
+          - entity: media_player.kitchen_speaker
+      - type: custom:decluttering-card
+        template: light_chip
+        variables:
+          - entity: light.kitchen_lights
+          - icon: mdi:ceiling-light
+bathroom_chips:
+  card:
+    type: grid
+    columns: 3
+    cards:
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: custom:decluttering-card
+        template: speaker_chip
+        variables:
+          - entity: media_player.bathroom_speaker
+office_chips:
+  card:
+    type: grid
+    columns: 3
+    cards:
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: custom:decluttering-card
+        template: light_chip
+        variables:
+          - entity: light.office_lamp
+          - icon: mdi:desk-lamp
