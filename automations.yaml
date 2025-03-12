@@ -1,0 +1,65 @@
+- id: '1740968133057'
+  alias: Play Show on Plex
+  description: ''
+  triggers:
+  - trigger: webhook
+    allowed_methods:
+    - POST
+    - PUT
+    local_only: false
+    webhook_id: play-show-on-plex-I1Xd3Y2FkyjS15_dEHZ5Ots4
+  conditions: []
+  actions:
+  - if:
+    - condition: device
+      device_id: 666a131febb9dd313ce248e9204154d0
+      domain: media_player
+      entity_id: d6eb8ee250c5760f46753e6c4e51c0b6
+      type: is_off
+    then:
+    - type: turn_on
+      device_id: 666a131febb9dd313ce248e9204154d0
+      entity_id: 07288ef4874f5c43a52aa81853a42fb8
+      domain: remote
+      alias: Turn on The Box
+  - wait_for_trigger: []
+    timeout:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+    alias: Wait 5 seconds
+  - if:
+    - condition: not
+      conditions:
+      - condition: device
+        device_id: fc76e65b6be8582f88750d62034f530d
+        domain: media_player
+        entity_id: 917cc105723ece566bbe583f21bb9c13
+        type: is_playing
+    then:
+    - action: media_player.play_media
+      data:
+        media_content_id: com.plexapp.android
+        media_content_type: app
+      target:
+        entity_id: media_player.shield_2
+      alias: Open Plex
+  - wait_for_trigger:
+    - trigger: state
+      entity_id:
+      - media_player.the_box
+      to: 'on'
+    timeout:
+      seconds: 10
+    alias: Wait 10 seconds
+    enabled: false
+  - action: media_player.play_media
+    data:
+      media_content_type: movie
+      media_content_id: '{ "library_name": "TV Shows", "sort": "lastViewedAt:desc",
+        "maxresults": 1 }'
+    target:
+      entity_id: media_player.plex_plex_for_android_tv_shield_android_tv
+    enabled: false
+  mode: single

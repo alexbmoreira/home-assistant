@@ -1,0 +1,139 @@
+play_our_show:
+  alias: Play Our Show
+  description: ''
+  sequence:
+  - type: turn_on
+    device_id: 666a131febb9dd313ce248e9204154d0
+    entity_id: 07288ef4874f5c43a52aa81853a42fb8
+    domain: remote
+    alias: Turn on The Box
+  - wait_for_trigger: []
+    timeout:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+    alias: Wait 5 seconds
+  - action: media_player.play_media
+    data:
+      media_content_id: com.plexapp.android
+      media_content_type: app
+    target:
+      entity_id: media_player.shield_2
+    alias: Open Plex
+  - wait_for_trigger:
+    - trigger: state
+      entity_id:
+      - media_player.the_box
+      to: 'on'
+    timeout:
+      seconds: 10
+    alias: Wait 10 seconds
+    enabled: false
+  - action: media_player.play_media
+    data:
+      media_content_type: movie
+      media_content_id: '{ "library_name": "TV Shows", "sort": "lastViewedAt:desc",
+        "maxresults": 1 }'
+    target:
+      entity_id: media_player.plex_plex_for_android_tv_shield_android_tv
+    enabled: false
+good_night:
+  sequence:
+  - type: turn_off
+    device_id: 666a131febb9dd313ce248e9204154d0
+    entity_id: 07288ef4874f5c43a52aa81853a42fb8
+    domain: remote
+  alias: Good Night
+  description: ''
+open_plex:
+  sequence:
+  - if:
+    - condition: device
+      type: is_off
+      device_id: 666a131febb9dd313ce248e9204154d0
+      entity_id: 07288ef4874f5c43a52aa81853a42fb8
+      domain: remote
+    then:
+    - type: turn_on
+      device_id: 666a131febb9dd313ce248e9204154d0
+      entity_id: 07288ef4874f5c43a52aa81853a42fb8
+      domain: remote
+      alias: Turn on The Box
+  - wait_for_trigger: []
+    timeout:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+    alias: Wait 5 seconds
+  - if:
+    - condition: not
+      conditions:
+      - condition: device
+        device_id: fc76e65b6be8582f88750d62034f530d
+        domain: media_player
+        entity_id: 917cc105723ece566bbe583f21bb9c13
+        type: is_playing
+    then:
+    - action: media_player.play_media
+      data:
+        media_content_id: com.plexapp.android
+        media_content_type: app
+      target:
+        entity_id: media_player.shield_2
+      alias: Open Plex
+  alias: Open Plex
+  description: ''
+party_mode:
+  sequence:
+  - type: turn_on
+    device_id: 666a131febb9dd313ce248e9204154d0
+    entity_id: 07288ef4874f5c43a52aa81853a42fb8
+    domain: remote
+    enabled: false
+  - wait_for_trigger:
+    - trigger: state
+      entity_id:
+      - media_player.shield_2
+      to: 'on'
+    enabled: false
+  - action: spotcast.start
+    metadata: {}
+    data:
+      limit: 20
+      force_playback: false
+      random_song: false
+      repeat: 'off'
+      shuffle: false
+      offset: 0
+      start_position: 0
+      ignore_fully_played: false
+      uri: spotify:playlist:37i9dQZF1DX30w0JtSIv4j
+      entity_id: media_player.full_house
+  - wait_for_trigger:
+    - trigger: state
+      entity_id:
+      - media_player.full_house
+      to: playing
+  - action: light.turn_on
+    metadata: {}
+    data:
+      rgb_color:
+      - 69
+      - 13
+      - 89
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.couch_lamp
+      - light.globe_light
+  - action: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 30
+    target:
+      entity_id: light.kitchen_lights
+  alias: Party Mode
+  description: ''
+  icon: mdi:party-popper

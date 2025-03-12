@@ -1,0 +1,69 @@
+living_room_card:
+  card:
+    type: custom:button-card
+    name: Living Room
+    icon: mdi:sofa
+    grid_options:
+      columns: 6
+    show_state: false
+    custom_fields:
+      actions_container:
+        card:
+          type: vertical-stack
+          cards:
+            - type: custom:decluttering-card
+              template: speaker_chip
+              variables:
+                - entity: media_player.tv_soundbar
+            - type: custom:decluttering-card
+              template: television_chip
+              variables:
+                - entity: media_player.shield_2
+            - type: custom:decluttering-card
+              template: light_chip
+              variables:
+                - entity: light.globe_light
+                - icon: phu:ikea-fado
+            - type: custom:decluttering-card
+              template: light_chip
+              variables:
+                - entity: light.couch_lamp
+                - icon: mdi:floor-lamp
+    styles:
+      grid:
+        - grid-template-areas: |
+            "n actions_container"
+            "s actions_container"
+            "i actions_container"
+        - grid-template-columns: auto auto
+        - grid-template-rows: auto auto
+      card:
+        - padding: 12px
+        - background: var(--card-background-color)
+        - border: none
+        - box-shadow: 0px 1px 8px black
+      custom_fields:
+        actions_container:
+          - height: 152px
+          - justify-self: end
+      name:
+        - justify-self: start
+        - font-size: 18px
+        - font-weight: 700
+        - margin-bottom: 20px
+      state:
+        - justify-self: start
+        - font-size: 12px
+        - font-weight: 500
+        - opacity: '0.6'
+      img_cell:
+        - position: absolute
+        - background-color: var(--primary-background-color)
+        - bottom: -20px
+        - left: -30px
+        - width: 130px
+        - height: 130px
+        - border-radius: 40px
+      icon:
+        - width: 60px
+        - transform: translateX(10px)  
