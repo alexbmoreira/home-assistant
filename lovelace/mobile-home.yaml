@@ -118,19 +118,18 @@ views:
                   template: weather_card
               scenes:
                 card:
-                  type: custom:button-card
-                  name: Scenes
+                  type: custom:decluttering-card
+                  template: scenes
             styles:
               grid:
                 - grid-template-areas: |
                     "weather scenes"
                 - grid-template-columns: 1fr 1fr
-                - grid-template-rows: auto
+                - grid-template-rows: 50px
               card:
                 - padding: 12px
                 - background: var(--secondary-background-color)
                 - border: none
-                - box-shadow: 0px 1px 8px black
           - type: vertical-stack
             cards:
               - type: horizontal-stack
@@ -142,6 +141,7 @@ views:
                       - name: Living Room
                       - icon: mdi:sofa
                       - template: living_room_chips
+                      - popup_template: living_room 
                   - type: custom:decluttering-card
                     template: room_card
                     variables:
