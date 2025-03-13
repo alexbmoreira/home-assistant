@@ -114,67 +114,8 @@ views:
             custom_fields:
               weather:
                 card:
-                  type: custom:button-card
-                  show_state: true
-                  entity: weather.forecast_home
-                  icon: >
-                    [[[
-                      const state = states['weather.forecast_home'].state;
-                      switch(state) {
-                        case 'sunny':
-                          return 'mdi:weather-sunny';
-                        case 'partlycloudy':
-                          return 'mdi:weather-partly-cloudy';
-                        case 'cloudy':
-                          return 'mdi:weather-cloudy';
-                        case 'rainy':
-                          return 'mdi:weather-rainy';
-                        case 'snowy':
-                          return 'mdi:weather-snowy';
-                        case 'pouring':
-                          return 'mdi:weather-pouring';
-                        case 'lightning':
-                          return 'mdi:weather-lightning';
-                        case 'clear-night':
-                          return 'mdi:weather-night';
-                        default:
-                          return 'mdi:thermometer';
-                      }
-                    ]]]
-                  name: "[[[ return states['weather.forecast_home'].attributes.temperature + ' ' + states['weather.forecast_home'].attributes.temperature_unit ]]]"
-                  state_display: |
-                    [[[
-                      return `${states['weather.forecast_home'].attributes.wind_speed} ${states['weather.forecast_home'].attributes.wind_speed_unit}`
-                    ]]]
-                  tap_action:
-                    action: more-info
-                  styles:
-                    grid:
-                      - grid-template-areas: |
-                          "i n"
-                          "i s"
-                      - grid-template-columns: 60px auto
-                      - grid-template-rows: auto auto
-                    card:
-                      - background: none
-                      - border: none
-                    name:
-                      - justify-self: start
-                      - font-size: 16px
-                      - font-weight: 700
-                      - margin-left: 10px
-                    state:
-                      - justify-self: start
-                      - font-size: 14px
-                      - color: var(--secondary-text-color)
-                      - margin-left: 10px
-                    img_cell:
-                      - background: var(--card-background-color)
-                      - height: 60px
-                      - border-radius: 50%
-                    icon:
-                      - color: var(--secondary-text-color)
-                      - width: 30px
+                  type: custom:decluttering-card
+                  template: weather_card
               scenes:
                 card:
                   type: custom:button-card
