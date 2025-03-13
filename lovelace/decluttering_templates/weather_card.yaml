@@ -1,0 +1,97 @@
+weather_info:
+  card:
+    type: custom:button-card
+    entity: weather.forecast_home
+    icon: '[[icon]]'
+    name: '[[info]]'
+    styles:
+      grid:
+        - grid-template-areas: |
+            "i n"
+        - grid-template-columns: 16px auto
+        - grid-template-rows: auto
+      card:
+        - background: none
+        - border: none
+        - margin-left: 10px
+      name:
+        - justify-self: start
+        - font-size: 14px
+        - color: var(--secondary-text-color)
+        - margin-left: 5px
+      icon:
+        - color: var(--secondary-text-color)
+        - width: 16px
+
+weather_card:
+  card:
+    type: custom:button-card
+    entity: weather.forecast_home
+    icon: >
+      [[[
+        const state = states['weather.forecast_home'].state;
+        switch(state) {
+          case 'sunny':
+            return 'mdi:weather-sunny';
+          case 'partlycloudy':
+            return 'mdi:weather-partly-cloudy';
+          case 'cloudy':
+            return 'mdi:weather-cloudy';
+          case 'rainy':
+            return 'mdi:weather-rainy';
+          case 'snowy':
+            return 'mdi:weather-snowy';
+          case 'pouring':
+            return 'mdi:weather-pouring';
+          case 'lightning':
+            return 'mdi:weather-lightning';
+          case 'clear-night':
+            return 'mdi:weather-night';
+          default:
+            return 'mdi:thermometer';
+        }
+      ]]]
+    name: "[[[ return states['weather.forecast_home'].attributes.temperature + ' ' + states['weather.forecast_home'].attributes.temperature_unit ]]]"
+    custom_fields:
+      wind_speed:
+        card:
+          type: custom:decluttering-card
+          template: weather_info
+          variables:
+            - icon: mdi:weather-windy
+            - info: |
+                [[[
+                  return `${states['weather.forecast_home'].attributes.wind_speed} ${states['weather.forecast_home'].attributes.wind_speed_unit}`
+                ]]]
+      humidity:
+        card:
+          type: custom:decluttering-card
+          template: weather_info
+          variables:
+            - icon: mdi:water-percent
+            - info: "[[[ return `${states['weather.forecast_home'].attributes.humidity}%` ]]]"
+    tap_action:
+      action: more-info
+    styles:
+      grid:
+        - grid-template-areas: |
+            "i n"
+            "i wind_speed"
+            "i humidity"
+        - grid-template-columns: 60px auto
+        - grid-template-rows: 20px 18px 18px
+      card:
+        - background: none
+        - border: none
+      name:
+        - justify-self: start
+        - font-size: 16px
+        - font-weight: 700
+        - margin-left: 10px
+      img_cell:
+        - background: var(--card-background-color)
+        - height: 60px
+        - border-radius: 50%
+      icon:
+        - color: var(--secondary-text-color)
+        - width: 30px
