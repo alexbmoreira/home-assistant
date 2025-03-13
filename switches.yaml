@@ -1,0 +1,14 @@
+- platform: template
+  switches:
+    all_lights:
+      value_template: >
+        {% set domain = 'light' %}
+        {% set state = 'on' %}
+        {{ states[domain] | selectattr('state','eq', state) | list | count > 0 }}
+      turn_on:
+        service: shell_command.nop
+      turn_off:
+        service: light.turn_off
+        data:
+          entity_id: all
+

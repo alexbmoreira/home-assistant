@@ -13,6 +13,7 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 template: !include templates.yaml
+switch: !include switches.yaml
 
 spotcast:
   sp_dc: !secret spotify_sp_dc
@@ -39,6 +40,8 @@ lovelace:
     - url: /hacsfiles/custom-brand-icons/custom-brand-icons.js
       type: module
     - url: /hacsfiles/lovelace-flower-card/flower-card.js
+      type: module
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
       type: module
   dashboards:
     desktop-home:

@@ -6,6 +6,15 @@ room_card:
     grid_options:
       columns: 6
     show_state: false
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: popup
+        data:
+          title: '[[name]]'
+          content:
+            type: custom:decluttering-card
+            template: '[[popup_template]]'
     custom_fields:
       actions_container:
         card:
@@ -22,7 +31,6 @@ room_card:
         - padding: 12px
         - background: var(--secondary-background-color)
         - border: none
-        - box-shadow: 0px 1px 8px black
         - height: 125px
       custom_fields:
         actions_container:

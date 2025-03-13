@@ -1,0 +1,53 @@
+living_room:
+  card:
+    type: vertical-stack
+    cards:
+      - type: heading
+        heading: Lights
+        heading_style: title
+        icon: mdi:lightbulb-group
+      - type: custom:mushroom-light-card
+        show_brightness_control: true
+        show_color_control: true
+        entity: light.couch_lamp
+        use_light_color: true
+        collapsible_controls: false
+        layout: horizontal
+        icon: mdi:floor-lamp
+      - type: custom:mushroom-light-card
+        show_brightness_control: true
+        show_color_control: true
+        use_light_color: true
+        collapsible_controls: false
+        layout: horizontal
+        icon: phu:ikea-fado
+        entity: light.globe_light
+        fill_container: false
+      - type: heading
+        icon: mdi:sprout
+        heading: Plants
+        heading_style: title
+      - type: custom:flower-card
+        entity: plant.pothos
+        battery_sensor: sensor.myflower_battery
+        show_bars:
+          - moisture
+          - temperature
+          - conductivity
+          - illuminance
+        display_type: compact
+      - type: heading
+        icon: mdi:television
+        heading: TV
+        heading_style: title
+        badges: []
+      - type: custom:mini-media-player
+        entity: media_player.plex_shield
+      - type: heading
+        icon: mdi:speaker
+        heading: Audio
+        heading_style: title
+      - type: custom:mini-media-player
+        entity: media_player.tv_soundbar_music_assistant
+        artwork: cover
+        group: false
