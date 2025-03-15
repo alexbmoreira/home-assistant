@@ -1,65 +1,194 @@
-- id: '1740968133057'
-  alias: Play Show on Plex
+- id: '1741918422543'
+  alias: Play TV Show on Plex
   description: ''
   triggers:
-  - trigger: webhook
-    allowed_methods:
-    - POST
-    - PUT
-    local_only: false
-    webhook_id: play-show-on-plex-I1Xd3Y2FkyjS15_dEHZ5Ots4
+  - trigger: conversation
+    command:
+    - Play the show {show} on Plex
   conditions: []
   actions:
-  - if:
-    - condition: device
-      device_id: 666a131febb9dd313ce248e9204154d0
-      domain: media_player
-      entity_id: d6eb8ee250c5760f46753e6c4e51c0b6
-      type: is_off
-    then:
-    - type: turn_on
-      device_id: 666a131febb9dd313ce248e9204154d0
-      entity_id: 07288ef4874f5c43a52aa81853a42fb8
-      domain: remote
-      alias: Turn on The Box
-  - wait_for_trigger: []
+  - type: turn_on
+    device_id: 666a131febb9dd313ce248e9204154d0
+    entity_id: 07288ef4874f5c43a52aa81853a42fb8
+    domain: remote
+    alias: Turn on The Box
+  - wait_for_trigger:
+    - trigger: state
+      entity_id:
+      - media_player.shield
+      from: 'off'
+      to: 'on'
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 5
     timeout:
       hours: 0
       minutes: 0
       seconds: 5
       milliseconds: 0
-    alias: Wait 5 seconds
   - if:
-    - condition: not
-      conditions:
-      - condition: device
-        device_id: fc76e65b6be8582f88750d62034f530d
-        domain: media_player
-        entity_id: 917cc105723ece566bbe583f21bb9c13
-        type: is_playing
+    - condition: state
+      entity_id: media_player.plex_shield
+      state: unavailable
     then:
-    - action: media_player.play_media
+    - alias: Open Plex
+      action: media_player.play_media
       data:
         media_content_id: com.plexapp.android
         media_content_type: app
       target:
-        entity_id: media_player.shield_2
-      alias: Open Plex
+        entity_id:
+        - media_player.shield
+    - wait_for_trigger:
+      - trigger: state
+        entity_id:
+        - media_player.plex_shield
+        from: unavailable
+      timeout:
+        hours: 0
+        minutes: 0
+        seconds: 5
+        milliseconds: 0
+    - action: button.press
+      metadata: {}
+      data: {}
+      target:
+        entity_id: button.alex_scan_clients
+  - action: media_player.play_media
+    data:
+      media_content_type: EPISODE
+      media_content_id: '{ "library_name": "TV Shows", "show_name": "{{ trigger.slots.show
+        }}", "episode.unwatched": true, "episode.inProgress": [true, false], "resume":
+        1, "sort": "year", "maxresults": 1 }'
+    target:
+      entity_id: media_player.plex_shield
+  mode: single
+- id: '1741926517429'
+  alias: Play Movie on Plex
+  description: ''
+  triggers:
+  - trigger: conversation
+    command:
+    - Play the movie {show} on Plex
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 666a131febb9dd313ce248e9204154d0
+    entity_id: 07288ef4874f5c43a52aa81853a42fb8
+    domain: remote
+    alias: Turn on The Box
   - wait_for_trigger:
     - trigger: state
       entity_id:
-      - media_player.the_box
+      - media_player.shield
+      from: 'off'
       to: 'on'
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 5
     timeout:
-      seconds: 10
-    alias: Wait 10 seconds
-    enabled: false
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - if:
+    - condition: state
+      entity_id: media_player.plex_shield
+      state: unavailable
+    then:
+    - alias: Open Plex
+      action: media_player.play_media
+      data:
+        media_content_id: com.plexapp.android
+        media_content_type: app
+      target:
+        entity_id:
+        - media_player.shield
+    - wait_for_trigger:
+      - trigger: state
+        entity_id:
+        - media_player.plex_shield
+        from: unavailable
+      timeout:
+        hours: 0
+        minutes: 0
+        seconds: 5
+        milliseconds: 0
+    - action: button.press
+      metadata: {}
+      data: {}
+      target:
+        entity_id: button.alex_scan_clients
   - action: media_player.play_media
     data:
       media_content_type: movie
-      media_content_id: '{ "library_name": "TV Shows", "sort": "lastViewedAt:desc",
-        "maxresults": 1 }'
+      media_content_id: 'plex://{ "library_name": "Movies", "title": "{{ trigger.slots.show
+        }}"}'
     target:
-      entity_id: media_player.plex_plex_for_android_tv_shield_android_tv
-    enabled: false
+      entity_id: media_player.plex_shield
+  mode: single
+- id: '1741926711468'
+  alias: Play Current Show on Plex
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - action: remote.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: remote.shield
+  - wait_for_trigger:
+    - trigger: state
+      entity_id:
+      - media_player.shield
+      from: 'off'
+      to: 'on'
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 5
+    timeout:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - if:
+    - condition: state
+      entity_id: media_player.plex_shield
+      state: unavailable
+    then:
+    - alias: Open Plex
+      action: media_player.play_media
+      data:
+        media_content_id: com.plexapp.android
+        media_content_type: app
+      target:
+        entity_id:
+        - media_player.shield
+    - wait_for_trigger:
+      - trigger: state
+        entity_id:
+        - media_player.plex_shield
+        from: unavailable
+      timeout:
+        hours: 0
+        minutes: 0
+        seconds: 5
+        milliseconds: 0
+    - action: button.press
+      metadata: {}
+      data: {}
+      target:
+        entity_id: button.alex_scan_clients
+  - action: media_player.play_media
+    data:
+      media_content_type: EPISODE
+      media_content_id: '{ "library_name": "TV Shows", "episode.unwatched": true,
+        "episode.inProgress": [true, false], "resume": 1, "sort": ["lastViewedAt:desc",
+        "year"], "maxresults": 1 }'
+    target:
+      entity_id: media_player.plex_shield
   mode: single

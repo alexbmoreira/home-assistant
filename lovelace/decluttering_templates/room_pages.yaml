@@ -1,0 +1,122 @@
+room_page:
+  card:
+    type: vertical-stack
+    cards:
+      - type: custom:button-card
+        icon: mdi:chevron-left
+        name: '[[name]]'
+        tap_action:
+          action: navigate
+          navigation_path: /mobile-home
+        styles:
+          grid:
+            - grid-template-areas: |
+                "i n"
+            - grid-template-columns: 40px auto
+            - grid-template-rows: auto
+          card:
+            - border: none
+            - background: none
+          name:
+            - justify-self: start
+            - font-size: 24px
+            - font-weight: 700
+          icon:
+            - width: 30px
+      - type: custom:decluttering-card
+        template: '[[template]]'
+    
+living_room_page:
+  card:
+    type: vertical-stack
+    cards:
+      - type: heading
+        heading: Lights
+        heading_style: title
+        icon: mdi:lightbulb-group
+      - type: custom:mushroom-light-card
+        show_brightness_control: true
+        show_color_control: true
+        entity: light.couch_lamp
+        use_light_color: true
+        collapsible_controls: false
+        layout: horizontal
+        icon: mdi:floor-lamp
+      - type: custom:mushroom-light-card
+        show_brightness_control: true
+        show_color_control: true
+        use_light_color: true
+        collapsible_controls: false
+        layout: horizontal
+        icon: phu:ikea-fado
+        entity: light.globe_light
+        fill_container: false
+      - type: heading
+        icon: mdi:sprout
+        heading: Plants
+        heading_style: title
+      - type: custom:flower-card
+        entity: plant.pothos
+        battery_sensor: sensor.myflower_battery
+        show_bars:
+          - moisture
+          - temperature
+          - conductivity
+          - illuminance
+        display_type: compact
+      - type: heading
+        icon: mdi:television
+        heading: TV
+        heading_style: title
+        badges: []
+      - type: custom:mini-media-player
+        entity: media_player.plex_shield
+      - type: heading
+        icon: mdi:speaker
+        heading: Audio
+        heading_style: title
+      - type: custom:mini-media-player
+        entity: media_player.tv_soundbar
+        artwork: cover
+        group: false
+
+kitchen_page:
+  card:
+    type: vertical-stack
+    cards:
+      - type: heading
+        heading: Lights
+        heading_style: title
+        icon: mdi:lightbulb-group
+      - type: custom:mushroom-light-card
+        show_brightness_control: true
+        show_color_control: true
+        entity: light.kitchen_lights
+        use_light_color: true
+        collapsible_controls: false
+        layout: horizontal
+        icon: mdi:floor-lamp
+        show_color_temp_control: false
+      - type: heading
+        icon: mdi:speaker
+        heading: Audio
+        heading_style: title
+      - type: custom:mini-media-player
+        entity: media_player.kitchen_speaker
+        artwork: cover
+        group: false
+
+bedroom_page:
+  card:
+    type: vertical-stack
+    cards: []
+
+bathroom_page:
+  card:
+    type: vertical-stack
+    cards: []
+
+office_page:
+  card:
+    type: vertical-stack
+    cards: []

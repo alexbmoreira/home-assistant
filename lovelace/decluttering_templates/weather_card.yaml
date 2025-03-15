@@ -89,7 +89,7 @@ weather_card:
         - font-weight: 700
         - margin-left: 10px
       img_cell:
-        - background: var(--card-background-color)
+        - background: var(--card-secondary-background-color)
         - height: 60px
         - border-radius: 50%
       icon:

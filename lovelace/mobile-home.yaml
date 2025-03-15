@@ -31,31 +31,6 @@ views:
                 styles:
                   entity_picture:
                     - filter: grayscale(100%)
-            styles:
-              card:
-                - background: none
-                - box-shadow: none
-                - border: none
-              grid:
-                - grid-template-areas: '"pic n one" "pic l one"'
-                - grid-template-rows: min-content min-content min-content
-                - grid-template-columns: 50px 1fr 50px
-                - grid-column-gap: 15px
-              name:
-                - justify-self: start
-                - align-self: center
-                - font-weight: 700
-                - font-size: 15px
-              label:
-                - justify-self: start
-                - align-self: start
-                - font-size: 12px
-                - font-weight: 500
-                - color: var(--contrast14)
-              entity_picture:
-                - width: 40px
-                - height: 40px
-                - border-radius: 12px
             custom_fields:
               pic:
                 card:
@@ -105,11 +80,31 @@ views:
                       - width: 40px
                       - height: 40px
                       - border-radius: 10px
-                    img_cell:
-                      - background-color: var(--contrast1)
-                      - width: 40px
-                      - height: 40px
-                      - border-radius: 10px
+            styles:
+              card:
+                - background: none
+                - box-shadow: none
+                - border: none
+              grid:
+                - grid-template-areas: '"pic n one" "pic l one"'
+                - grid-template-rows: min-content min-content min-content
+                - grid-template-columns: 50px 1fr 50px
+                - grid-column-gap: 12px
+              name:
+                - justify-self: start
+                - align-self: center
+                - font-weight: 700
+                - font-size: 15px
+              label:
+                - justify-self: start
+                - align-self: start
+                - font-size: 12px
+                - font-weight: 500
+                - color: var(--secondary-text-color)
+              entity_picture:
+                - width: 40px
+                - height: 40px
+                - border-radius: 12px
           - type: custom:button-card
             custom_fields:
               weather:
@@ -124,11 +119,11 @@ views:
               grid:
                 - grid-template-areas: |
                     "weather scenes"
-                - grid-template-columns: 1fr 1fr
-                - grid-template-rows: 50px
+                - grid-template-columns: 2fr auto
+                - grid-template-rows: 60px
               card:
                 - padding: 12px
-                - background: var(--secondary-background-color)
+                - background: var(--card-background-color)
                 - border: none
           - type: vertical-stack
             cards:
@@ -138,31 +133,37 @@ views:
                   - type: custom:decluttering-card
                     template: room_card
                     variables:
+                      - temp_sensor_id: living_room
                       - name: Living Room
                       - icon: mdi:sofa
                       - template: living_room_chips
-                      - popup_template: living_room 
+                      - tap_path: living-room 
                   - type: custom:decluttering-card
                     template: room_card
                     variables:
+                      - temp_sensor_id: living_room
                       - name: Kitchen
                       - icon: mdi:fridge
                       - template: kitchen_chips
+                      - tap_path: kitchen
               - type: horizontal-stack
                 columns: 2
                 cards:
                   - type: custom:decluttering-card
                     template: room_card
                     variables:
+                      - temp_sensor_id: bedroom
                       - name: Bedroom
                       - icon: mdi:bed-king
                       - template: bedroom_chips
+                      - tap_path: bedroom
                   - type: custom:decluttering-card
                     template: room_card
                     variables:
                       - name: Bathroom
                       - icon: mdi:bathtub
                       - template: bathroom_chips
+                      - tap_path: bathroom
               - type: horizontal-stack
                 columns: 2
                 cards:
@@ -172,5 +173,56 @@ views:
                       - name: Office
                       - icon: mdi:desktop-classic
                       - template: office_chips
+                      - tap_path: office
                   - type: grid
                     cards: []
+  - type: sections
+    max_columns: 1
+    subview: true
+    path: living-room
+    sections:
+      - type: custom:decluttering-card
+        template: room_page
+        variables:
+          - name: Living Room
+          - template: living_room_page
+  - type: sections
+    max_columns: 1
+    subview: true
+    path: kitchen
+    sections:
+      - type: custom:decluttering-card
+        template: room_page
+        variables:
+          - name: Kitchen
+          - template: kitchen_page
+  - type: sections
+    max_columns: 1
+    subview: true
+    path: bedroom
+    sections:
+      - type: custom:decluttering-card
+        template: room_page
+        variables:
+          - name: Bedroom
+          - template: bedroom_page
+  - type: sections
+    max_columns: 1
+    subview: true
+    path: bathroom
+    sections:
+      - type: custom:decluttering-card
+        template: room_page
+        variables:
+          - name: Bathroom
+          - template: bathroom_page
+  - type: sections
+    max_columns: 1
+    subview: true
+    path: office
+    sections:
+      - type: custom:decluttering-card
+        template: room_page
+        variables:
+          - name: Office
+          - template: office_page
