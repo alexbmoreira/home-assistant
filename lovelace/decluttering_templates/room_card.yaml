@@ -5,16 +5,18 @@ room_card:
     icon: '[[icon]]'
     grid_options:
       columns: 6
-    show_state: false
+    show_state: true
+    state_display: |
+      [[[
+        const temperature = states['sensor.[[temp_sensor_id]]_climate_sensor_temperature'] ?
+          states['sensor.[[temp_sensor_id]]_climate_sensor_temperature'].state :
+          null;
+
+        return temperature && parseFloat(temperature).toFixed(1) + " °C";
+      ]]]
     tap_action:
-      action: fire-dom-event
-      browser_mod:
-        service: popup
-        data:
-          title: '[[name]]'
-          content:
-            type: custom:decluttering-card
-            template: '[[popup_template]]'
+      action: navigate
+      navigation_path: /mobile-home/[[tap_path]]
     custom_fields:
       actions_container:
         card:
@@ -29,7 +31,7 @@ room_card:
         - grid-template-rows: auto 80px
       card:
         - padding: 12px
-        - background: var(--secondary-background-color)
+        - background: var(--card-background-color)
         - border: none
         - height: 125px
       custom_fields:
@@ -46,13 +48,13 @@ room_card:
         - text-align: start
         - align-self: start
       state:
-        - justify-self: start
+        - justify-self: end
         - font-size: 12px
         - font-weight: 500
         - opacity: '0.6'
       img_cell:
         - position: absolute
-        - background: var(--card-background-color)
+        - background: var(--card-secondary-background-color)
         - bottom: -25px
         - left: -25px
         - width: 90px

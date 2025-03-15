@@ -2,13 +2,14 @@ scene_chip:
   default:
     - bg_color_on: "#9AC9FE"
     - icon_color_on: "#449BFE"
+    - action:
+        action: toggle
   card:
     type: custom:button-card
     entity: '[[entity]]'
     show_label: false
     show_name: false
-    tap_action:
-      action: toggle
+    tap_action: '[[action]]'
     hold_action:
       action: more-info
     icon: '[[icon]]'
@@ -24,7 +25,7 @@ scene_chip:
         - width: 30px
         - height: 30px
         - box-shadow: none
-        - background: var(--card-background-color)
+        - background: var(--card-secondary-background-color)
         - border: none
         - border: none
       icon:
@@ -35,12 +36,11 @@ scene_chip:
 scene_list:
   card:
     type: horizontal-stack
-    columns: 2
     cards:
       - type: vertical-stack
         cards:
           - type: custom:mushroom-entity-card
-            entity: script.open_plex
+            entity: script.play_our_show
             secondary_info: none
             icon: phu:plex
           - type: custom:mushroom-entity-card
@@ -50,51 +50,43 @@ scene_list:
         cards:
           - type: custom:mushroom-entity-card
             secondary_info: none
-            entity: scene.dinner_time
+            entity: script.dinner_time
 
 scenes:
   card:
     type: horizontal-stack
     cards:
-      - type: custom:decluttering-card
-        template: scene_chip
-        variables:
-          - entity: script.open_plex
-          - icon: phu:plex
-      - type: custom:decluttering-card
-        template: scene_chip
-        variables:
-          - entity: scene.dinner_time
-          - icon: mdi:food-drumstick
-      - type: custom:decluttering-card
-        template: scene_chip
-        variables:
-          - entity: switch.all_lights
-          - icon: mdi:lightbulb-group
-          - bg_color_on: "#FCE6C8"
-          - icon_color_on: "#F99803"
-      - type: custom:button-card
-        show_label: false
-        show_name: false
-        tap_action:
-          action: fire-dom-event
-          browser_mod:
-            service: popup
-            data:
-              title: Scenes and Scripts
-              content:
-                type: custom:decluttering-card
-                template: scene_list
-        icon: mdi:dots-horizontal
-        styles:
-          card:
-            - width: 30px
-            - height: 30px
-            - box-shadow: none
-            - background: var(--card-background-color)
-            - border: none
-            - border: none
-          icon:
-            - width: 20px
-            - color: var(--secondary-text-color)
-            - border-radius: 8px
+      # - type: vertical-stack
+      #   cards:
+          - type: custom:decluttering-card
+            template: scene_chip
+            variables:
+              - entity: script.play_our_show
+              - icon: phu:plex
+          - type: custom:decluttering-card
+            template: scene_chip
+            variables:
+              - entity: scene.dinner_time
+              - icon: mdi:food-drumstick
+      # - type: vertical-stack
+      #   cards:
+          - type: custom:decluttering-card
+            template: scene_chip
+            variables:
+              - entity: switch.all_lights
+              - icon: mdi:lightbulb-group
+              - bg_color_on: "#FCE6C8"
+              - icon_color_on: "#F99803"
+          - type: custom:decluttering-card
+            template: scene_chip
+            variables:
+              - icon: mdi:dots-horizontal
+              - action:
+                  action: fire-dom-event
+                  browser_mod:
+                    service: popup
+                    data:
+                      title: Scenes and Scripts
+                      content:
+                        type: custom:decluttering-card
+                        template: scene_list

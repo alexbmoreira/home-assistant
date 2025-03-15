@@ -21,7 +21,7 @@ device_chip:
         - width: 32px
         - height: 32px
         - box-shadow: none
-        - background: var(--primary-background-color)
+        - background: var(--card-secondary-background-color)
         - border: none
         - border: none
         - margin-right: -5px
