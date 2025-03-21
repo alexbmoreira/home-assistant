@@ -56,20 +56,20 @@ scenes:
   card:
     type: horizontal-stack
     cards:
-      # - type: vertical-stack
-      #   cards:
+      - type: vertical-stack
+        cards:
           - type: custom:decluttering-card
             template: scene_chip
             variables:
-              - entity: script.play_our_show
+              - entity: script.open_plex
               - icon: phu:plex
           - type: custom:decluttering-card
             template: scene_chip
             variables:
-              - entity: scene.dinner_time
+              - entity: script.dinner_time
               - icon: mdi:food-drumstick
-      # - type: vertical-stack
-      #   cards:
+      - type: vertical-stack
+        cards:
           - type: custom:decluttering-card
             template: scene_chip
             variables:

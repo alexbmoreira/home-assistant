@@ -1,0 +1,5 @@
+- platform: group
+  name: "Bedroom Lamps"
+  entities:
+    - light.bedside_lamp_pascale
+    - light.bedside_lamp_alex
