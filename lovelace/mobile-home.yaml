@@ -115,11 +115,35 @@ views:
                 card:
                   type: custom:decluttering-card
                   template: scenes
+              assist:
+                card:
+                  type: custom:button-card
+                  icon: mdi:microphone-message
+                  tap_action:
+                    action: assist
+                    pipeline_id: preferred
+                    start_listening: true
+                  hold_action:
+                    action: assist
+                    pipeline_id: preferred
+                  styles:
+                    card:
+                      - justify-self: end
+                      - background: none
+                      - border: none
+                    img_cell:
+                      - background: var(--card-secondary-background-color)
+                      - height: 60px
+                      - width: 60px
+                      - border-radius: 50%
+                    icon:
+                      - color: var(--secondary-text-color)
+                      - width: 30px
             styles:
               grid:
                 - grid-template-areas: |
-                    "weather scenes"
-                - grid-template-columns: 2fr auto
+                    "weather assist scenes"
+                - grid-template-columns: 2fr 1fr 1fr
                 - grid-template-rows: 60px
               card:
                 - padding: 12px

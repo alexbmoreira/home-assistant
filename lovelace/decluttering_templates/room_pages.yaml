@@ -109,7 +109,38 @@ kitchen_page:
 bedroom_page:
   card:
     type: vertical-stack
-    cards: []
+    cards:
+      - type: heading
+        heading: Lights
+        heading_style: title
+        icon: mdi:lightbulb-group
+      - type: custom:mushroom-light-card
+        show_brightness_control: true
+        show_color_control: true
+        use_light_color: true
+        collapsible_controls: false
+        layout: horizontal
+        icon: mdi:lamp
+        entity: light.bedside_lamp_alex
+        name: Alex's Bedside Lamp
+      - type: custom:mushroom-light-card
+        show_brightness_control: true
+        show_color_control: true
+        use_light_color: true
+        collapsible_controls: false
+        layout: horizontal
+        icon: mdi:lamp
+        entity: light.bedside_lamp_pascale
+        name: Pascale's Bedside Lamp
+      - type: heading
+        icon: mdi:speaker
+        heading: Audio
+        heading_style: title
+      - type: custom:mini-media-player
+        entity: media_player.bedroom_display
+        artwork: cover
+        group: false
+
 
 bathroom_page:
   card:

@@ -1,137 +1,20 @@
 play_our_show:
   alias: Play Last Watched
   sequence:
-  - if:
-    - condition: state
-      entity_id: media_player.shield
-      state: 'off'
-    then:
-    - action: remote.turn_on
-      metadata: {}
-      data: {}
-      target:
-        entity_id: remote.shield
-    - wait_for_trigger:
-      - trigger: state
-        entity_id:
-        - media_player.shield
-        from: 'off'
-        to: 'on'
-        for:
-          hours: 0
-          minutes: 0
-          seconds: 5
-      timeout:
-        hours: 0
-        minutes: 0
-        seconds: 5
-        milliseconds: 0
-  - if:
-    - condition: state
-      entity_id: media_player.plex_shield
-      state: unavailable
-    then:
-    - alias: Open Plex
-      action: media_player.play_media
-      data:
-        media_content_id: com.plexapp.android
-        media_content_type: app
-      target:
-        entity_id:
-        - media_player.shield
-    - wait_for_trigger:
-      - trigger: state
-        entity_id:
-        - media_player.plex_shield
-        from: unavailable
-      timeout:
-        hours: 0
-        minutes: 0
-        seconds: 5
-        milliseconds: 0
-    - action: button.press
-      metadata: {}
-      data: {}
-      target:
-        entity_id: button.alex_scan_clients
+  - action: script.open_plex
+    metadata: {}
+    data: {}
   - action: media_player.play_media
     data:
       media_content_type: EPISODE
       media_content_id: '{ "library_name": "TV Shows", "episode.unwatched": true,
-        "resume": 1, "sort": ["lastViewedAt:desc", "year"], "maxresults": 1 }'
+        "sort": ["lastViewedAt:desc", "year"], "maxresults": 1 }'
     target:
       entity_id: media_player.plex_shield
   icon: phu:plex
-open_plex:
-  sequence:
-  - if:
-    - condition: state
-      entity_id: media_player.shield
-      state: 'off'
-    then:
-    - action: remote.turn_on
-      metadata: {}
-      data: {}
-      target:
-        entity_id: remote.shield
-    - wait_for_trigger:
-      - trigger: state
-        entity_id:
-        - media_player.shield
-        from: 'off'
-        to: 'on'
-        for:
-          hours: 0
-          minutes: 0
-          seconds: 5
-      timeout:
-        hours: 0
-        minutes: 0
-        seconds: 5
-        milliseconds: 0
-  - if:
-    - condition: state
-      entity_id: media_player.plex_shield
-      state: unavailable
-    then:
-    - alias: Open Plex
-      action: media_player.play_media
-      data:
-        media_content_id: com.plexapp.android
-        media_content_type: app
-      target:
-        entity_id:
-        - media_player.shield
-    - wait_for_trigger:
-      - trigger: state
-        entity_id:
-        - media_player.plex_shield
-        from: unavailable
-      timeout:
-        hours: 0
-        minutes: 0
-        seconds: 5
-        milliseconds: 0
-    - action: button.press
-      metadata: {}
-      data: {}
-      target:
-        entity_id: button.alex_scan_clients
-  alias: Open Plex
   description: ''
 party_mode:
   sequence:
-  - type: turn_on
-    device_id: 666a131febb9dd313ce248e9204154d0
-    entity_id: 07288ef4874f5c43a52aa81853a42fb8
-    domain: remote
-    enabled: false
-  - wait_for_trigger:
-    - trigger: state
-      entity_id:
-      - media_player.shield_2
-      to: 'on'
-    enabled: false
   - action: spotcast.start
     metadata: {}
     data:
@@ -184,3 +67,80 @@ dinner_time:
   alias: Dinner Time
   description: ''
   icon: mdi:food-drumstick
+shield_home:
+  alias: Shield Home
+  sequence:
+  - target:
+      entity_id:
+      - media_player.shield_adb
+    data:
+      command: HOME
+    action: androidtv.adb_command
+open_plex:
+  alias: Open Plex
+  sequence:
+  - if:
+    - condition: state
+      entity_id: media_player.shield
+      state: 'off'
+    then:
+    - action: remote.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: remote.shield
+    - wait_for_trigger:
+      - trigger: state
+        entity_id:
+        - media_player.shield
+        from: 'off'
+        to: 'on'
+        for:
+          hours: 0
+          minutes: 0
+          seconds: 5
+      timeout:
+        hours: 0
+        minutes: 0
+        seconds: 5
+        milliseconds: 0
+  - if:
+    - condition: not
+      conditions:
+      - condition: state
+        entity_id: media_player.plex_shield
+        state: playing
+    then:
+    - target:
+        entity_id:
+        - media_player.shield_adb
+      data:
+        command: am start -n com.plexapp.android/com.plexapp.plex.activities.SplashActivity
+      action: androidtv.adb_command
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 5
+        milliseconds: 0
+    - target:
+        entity_id:
+        - media_player.shield_adb
+      data:
+        command: ENTER
+      action: androidtv.adb_command
+    - action: button.press
+      metadata: {}
+      data: {}
+      target:
+        entity_id: button.alex_scan_clients
+launch_apollo_tv:
+  sequence:
+  - action: media_player.play_media
+    metadata: {}
+    data:
+      media_content_id: tv.startupshow.androidtv
+      media_content_type: app
+    target:
+      entity_id: media_player.shield
+  alias: Launch Apollo TV
+  description: ''

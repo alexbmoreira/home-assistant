@@ -10,7 +10,10 @@ living_room_chips:
       - type: custom:decluttering-card
         template: television_chip
         variables:
+          - name: The Box
           - entity: media_player.shield
+          - remote: remote.shield
+          - keyboard: remote.shield_adb
       - type: custom:decluttering-card
         template: speaker_chip
         variables:

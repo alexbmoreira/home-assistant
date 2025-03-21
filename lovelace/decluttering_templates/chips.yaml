@@ -1,4 +1,7 @@
 device_chip:
+  default:
+    - hold_action:
+        action: more-info
   card:
     type: custom:button-card
     entity: '[[entity]]'
@@ -6,8 +9,7 @@ device_chip:
     show_name: false
     tap_action:
       action: toggle
-    hold_action:
-      action: more-info
+    hold_action: '[[hold_action]]'
     icon: '[[icon]]'
     state:
       - value: "on"
@@ -48,6 +50,19 @@ television_chip:
       - icon: mdi:television
       - bg_color_on: "#9AC9FE"
       - icon_color_on: "#449BFE"
+      - hold_action:
+          action: fire-dom-event
+          browser_mod:
+            service: popup
+            data:
+              title: '[[name]]'
+              content:
+                type: custom:decluttering-card
+                template: universal_remote
+                variables:
+                  - entity: '[[entity]]'
+                  - remote: '[[remote]]'
+                  - keyboard: '[[keyboard]]'
 light_chip:
   default:
     - icon: mdi:lightbulb
@@ -77,3 +92,41 @@ fan_chip:
       - icon: mdi:fan
       - bg_color_on: "#91E7F3"
       - icon_color_on: "#00BCD4"
+
+universal_remote:
+  card:
+    type: custom:android-tv-card
+    custom_actions:
+      - type: button
+        name: startup_show
+        value_attribute: app_name
+        entity_id: '[[entity]]'
+        icon: fas:a
+        tap_action:
+          action: source
+          source: tv.startupshow.androidtv
+    keyboard_id: '[[keyboard]]'
+    media_player_id: '[[entity]]'
+    rows:
+      - - power
+        - home
+      - - dpad
+      - - back
+        - menu
+      - - ""
+      - - play_pause
+        - stop
+      - - ""
+      - - previous
+        - rewind
+        - fast_forward
+        - next
+      - - ""
+      - - keyboard
+        - volume_buttons
+      - - ""
+      - - plex
+        - spotify
+        - startup_show
+    remote_id: '[[remote]]'
+

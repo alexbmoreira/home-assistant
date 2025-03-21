@@ -135,54 +135,11 @@
   triggers: []
   conditions: []
   actions:
-  - action: remote.turn_on
+  - action: script.turn_on
     metadata: {}
     data: {}
     target:
-      entity_id: remote.shield
-  - wait_for_trigger:
-    - trigger: state
-      entity_id:
-      - media_player.shield
-      from: 'off'
-      to: 'on'
-      for:
-        hours: 0
-        minutes: 0
-        seconds: 5
-    timeout:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - if:
-    - condition: state
-      entity_id: media_player.plex_shield
-      state: unavailable
-    then:
-    - alias: Open Plex
-      action: media_player.play_media
-      data:
-        media_content_id: com.plexapp.android
-        media_content_type: app
-      target:
-        entity_id:
-        - media_player.shield
-    - wait_for_trigger:
-      - trigger: state
-        entity_id:
-        - media_player.plex_shield
-        from: unavailable
-      timeout:
-        hours: 0
-        minutes: 0
-        seconds: 5
-        milliseconds: 0
-    - action: button.press
-      metadata: {}
-      data: {}
-      target:
-        entity_id: button.alex_scan_clients
+      entity_id: script.open_plex
   - action: media_player.play_media
     data:
       media_content_type: EPISODE
