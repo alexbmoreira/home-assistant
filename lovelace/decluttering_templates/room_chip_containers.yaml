@@ -56,7 +56,7 @@ bedroom_chips:
       - type: custom:decluttering-card
         template: humidifier_chip
         variables:
-          - entity: humidifier.humidifier
+          - entity: humidifier.bedroom_humidifier
 kitchen_chips:
   card:
     type: grid

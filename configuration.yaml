@@ -31,7 +31,7 @@ lovelace:
       type: module
     - url: /hacsfiles/Bubble-Card/bubble-card.js
       type: module
-    - url: /hacsfiles/card-mod/card-mod.js
+    - url: /hacsfiles/lovelace-card-mod/card-mod.js
       type: module
     - url: /hacsfiles/decluttering-card/decluttering-card.js
       type: module

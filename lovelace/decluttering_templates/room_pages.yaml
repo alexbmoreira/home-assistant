@@ -30,124 +30,262 @@ living_room_page:
   card:
     type: vertical-stack
     cards:
-      - type: heading
-        heading: Lights
-        heading_style: title
-        icon: mdi:lightbulb-group
-      - type: custom:mushroom-light-card
-        show_brightness_control: true
-        show_color_control: true
-        entity: light.couch_lamp
-        use_light_color: true
-        collapsible_controls: false
-        layout: horizontal
-        icon: mdi:floor-lamp
-      - type: custom:mushroom-light-card
-        show_brightness_control: true
-        show_color_control: true
-        use_light_color: true
-        collapsible_controls: false
-        layout: horizontal
-        icon: phu:ikea-fado
-        entity: light.globe_light
-        fill_container: false
-      - type: heading
-        icon: mdi:sprout
-        heading: Plants
-        heading_style: title
-      - type: custom:flower-card
-        entity: plant.pothos
-        battery_sensor: sensor.myflower_battery
-        show_bars:
-          - moisture
-          - temperature
-          - conductivity
-          - illuminance
-        display_type: compact
-      - type: heading
-        icon: mdi:television
-        heading: TV
-        heading_style: title
-        badges: []
-      - type: custom:mini-media-player
-        entity: media_player.plex_shield
-      - type: heading
-        icon: mdi:speaker
-        heading: Audio
-        heading_style: title
-      - type: custom:mini-media-player
-        entity: media_player.tv_soundbar
-        artwork: cover
-        group: false
+    - type: entities
+      title: Lights
+      icon: mdi:lightbulb-group
+      show_header_toggle: false
+      entities:
+        - type: custom:mushroom-light-card
+          show_brightness_control: true
+          show_color_control: true
+          entity: light.couch_lamp
+          use_light_color: true
+          collapsible_controls: false
+          layout: horizontal
+          icon: mdi:floor-lamp
+        - type: custom:mushroom-light-card
+          show_brightness_control: true
+          show_color_control: true
+          use_light_color: true
+          collapsible_controls: false
+          layout: horizontal
+          icon: phu:ikea-fado
+          entity: light.globe_light
+          fill_container: false
+        - type: divider
+        - type: custom:mushroom-light-card
+          show_brightness_control: true
+          show_color_control: true
+          use_light_color: true
+          collapsible_controls: false
+          layout: horizontal
+          icon: mdi:lamps
+          entity: light.living_room_lamps
+      card_mod:
+        style: |
+          ha-card {
+            background: none;
+            border: none;
+          }
+    - type: entities
+      title: Plants
+      icon: mdi:sprout
+      show_header_toggle: false
+      entities:
+        - type: custom:flower-card
+          entity: plant.pothos
+          battery_sensor: sensor.myflower_battery
+          show_bars:
+            - moisture
+            - temperature
+            - conductivity
+            - illuminance
+          display_type: compact
+      card_mod:
+        style: |
+          ha-card {
+            background: none;
+            border: none;
+          }
+    - type: entities
+      title: TV
+      icon: mdi:television
+      show_header_toggle: false
+      entities:
+        - type: custom:mini-media-player
+          entity: media_player.shield_adb
+          name: The Box
+      card_mod:
+        style: |
+          ha-card {
+            background: none;
+            border: none;
+          }
+    - type: entities
+      title: Audio
+      icon: mdi:speaker
+      show_header_toggle: false
+      entities:
+        - type: custom:mini-media-player
+          entity: media_player.tv_soundbar
+          artwork: cover
+      card_mod:
+        style: |
+          ha-card {
+            background: none;
+            border: none;
+          }
+
 
 kitchen_page:
   card:
     type: vertical-stack
     cards:
-      - type: heading
-        heading: Lights
-        heading_style: title
+      - type: entities
+        title: Lights
         icon: mdi:lightbulb-group
-      - type: custom:mushroom-light-card
-        show_brightness_control: true
-        show_color_control: true
-        entity: light.kitchen_lights
-        use_light_color: true
-        collapsible_controls: false
-        layout: horizontal
-        icon: mdi:floor-lamp
-        show_color_temp_control: false
-      - type: heading
+        show_header_toggle: false
+        entities:
+          - type: custom:mushroom-light-card
+            show_brightness_control: true
+            show_color_control: true
+            use_light_color: true
+            collapsible_controls: false
+            layout: horizontal
+            icon: mdi:ceiling-light
+            entity: light.kitchen_lights
+        card_mod:
+          style: |
+            ha-card {
+              background: none;
+              border: none;
+            }
+      - type: entities
+        title: Audio
         icon: mdi:speaker
-        heading: Audio
-        heading_style: title
-      - type: custom:mini-media-player
-        entity: media_player.kitchen_speaker
-        artwork: cover
-        group: false
+        show_header_toggle: false
+        entities:
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_speaker
+            artwork: cover
+          - type: divider
+          - type: custom:mini-media-player
+            entity: media_player.full_house
+            artwork: cover
+        card_mod:
+          style: |
+            ha-card {
+              background: none;
+              border: none;
+            }
 
 bedroom_page:
   card:
     type: vertical-stack
     cards:
-      - type: heading
-        heading: Lights
-        heading_style: title
+      - type: entities
+        title: Lights
         icon: mdi:lightbulb-group
-      - type: custom:mushroom-light-card
-        show_brightness_control: true
-        show_color_control: true
-        use_light_color: true
-        collapsible_controls: false
-        layout: horizontal
-        icon: mdi:lamp
-        entity: light.bedside_lamp_alex
-        name: Alex's Bedside Lamp
-      - type: custom:mushroom-light-card
-        show_brightness_control: true
-        show_color_control: true
-        use_light_color: true
-        collapsible_controls: false
-        layout: horizontal
-        icon: mdi:lamp
-        entity: light.bedside_lamp_pascale
-        name: Pascale's Bedside Lamp
-      - type: heading
+        show_header_toggle: false
+        entities:
+          - type: custom:mushroom-light-card
+            show_brightness_control: true
+            show_color_control: true
+            use_light_color: true
+            collapsible_controls: false
+            layout: horizontal
+            icon: mdi:lamp
+            entity: light.bedside_lamp_alex
+            name: Alex's Bedside Lamp
+          - type: custom:mushroom-light-card
+            show_brightness_control: true
+            show_color_control: true
+            use_light_color: true
+            collapsible_controls: false
+            layout: horizontal
+            icon: mdi:lamp
+            entity: light.bedside_lamp_pascale
+            name: Pascale's Bedside Lamp
+          - type: divider
+          - type: custom:mushroom-light-card
+            show_brightness_control: true
+            show_color_control: true
+            use_light_color: true
+            collapsible_controls: false
+            layout: horizontal
+            icon: mdi:lamps
+            entity: light.bedroom_lamps
+        card_mod:
+          style: |
+            ha-card {
+              background: none;
+              border: none;
+            }
+      - type: entities
+        title: Audio
         icon: mdi:speaker
-        heading: Audio
-        heading_style: title
-      - type: custom:mini-media-player
-        entity: media_player.bedroom_display
-        artwork: cover
-        group: false
+        show_header_toggle: false
+        entities:
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_display
+            artwork: cover
+          - type: divider
+          - type: custom:mini-media-player
+            entity: media_player.full_house
+            artwork: cover
+        card_mod:
+          style: |
+            ha-card {
+              background: none;
+              border: none;
+            }
+      - type: entities
+        title: Air
+        icon: mdi:air-filter
+        show_header_toggle: false
+        entities:
+          - type: custom:mushroom-fan-card
+            entity: fan.bedroom_fan
+            icon_animation: true
+          - type: custom:mushroom-humidifier-card
+            entity: humidifier.bedroom_humidifier
+            show_target_humidity_control: true
+            collapsible_controls: true
+        card_mod:
+          style: |
+            ha-card {
+              background: none;
+              border: none;
+            }
+
+
 
 
 bathroom_page:
   card:
     type: vertical-stack
-    cards: []
+    cards:
+      - type: entities
+        title: Audio
+        icon: mdi:speaker
+        show_header_toggle: false
+        entities:
+          - type: custom:mini-media-player
+            entity: media_player.bathroom_speaker
+            artwork: cover
+          - type: divider
+          - type: custom:mini-media-player
+            entity: media_player.full_house
+            artwork: cover
+        card_mod:
+          style: |
+            ha-card {
+              background: none;
+              border: none;
+            }
+
 
 office_page:
   card:
     type: vertical-stack
-    cards: []
+    cards:
+      - type: entities
+        title: Lights
+        icon: mdi:lightbulb-group
+        show_header_toggle: false
+        entities:
+          - type: custom:mushroom-light-card
+            show_brightness_control: true
+            show_color_control: true
+            use_light_color: true
+            collapsible_controls: false
+            layout: horizontal
+            icon: mdi:desk-lamp
+            entity: light.office_lamp
+        card_mod:
+          style: |
+            ha-card {
+              background: none;
+              border: none;
+            }
+

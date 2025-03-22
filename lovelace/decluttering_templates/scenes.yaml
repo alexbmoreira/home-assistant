@@ -1,7 +1,7 @@
 scene_chip:
   default:
-    - bg_color_on: "#9AC9FE"
-    - icon_color_on: "#449BFE"
+    - bg_color_on: rgba(var(--rgb-state-media-player-color), 0.2)
+    - icon_color_on: rgb(var(--rgb-state-media-player-color))
     - action:
         action: toggle
   card:
@@ -75,8 +75,8 @@ scenes:
             variables:
               - entity: switch.all_lights
               - icon: mdi:lightbulb-group
-              - bg_color_on: "#FCE6C8"
-              - icon_color_on: "#F99803"
+              - bg_color_on: rgba(var(--rgb-state-light-color), 0.2)
+              - icon_color_on: rgb(var(--rgb-state-light-color))
           - type: custom:decluttering-card
             template: scene_chip
             variables:
