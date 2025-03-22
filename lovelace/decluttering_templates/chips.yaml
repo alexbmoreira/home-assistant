@@ -39,8 +39,8 @@ speaker_chip:
     variables:
       - entity: '[[entity]]'
       - icon: mdi:speaker
-      - bg_color_on: "#9AC9FE"
-      - icon_color_on: "#449BFE"
+      - bg_color_on: rgba(var(--rgb-state-media-player-color), 0.2)
+      - icon_color_on: rgb(var(--rgb-state-media-player-color))
 television_chip:
   card:
     type: custom:decluttering-card
@@ -48,8 +48,8 @@ television_chip:
     variables:
       - entity: '[[entity]]'
       - icon: mdi:television
-      - bg_color_on: "#9AC9FE"
-      - icon_color_on: "#449BFE"
+      - bg_color_on: rgba(var(--rgb-state-media-player-color), 0.2)
+      - icon_color_on: rgb(var(--rgb-state-media-player-color))
       - hold_action:
           action: fire-dom-event
           browser_mod:
@@ -72,8 +72,8 @@ light_chip:
     variables:
       - entity: '[[entity]]'
       - icon: '[[icon]]'
-      - bg_color_on: "#FCE6C8"
-      - icon_color_on: "#F99803"
+      - bg_color_on: rgba(var(--rgb-state-light-color), 0.2)
+      - icon_color_on: rgb(var(--rgb-state-light-color))
 humidifier_chip:
   card:
     type: custom:decluttering-card
@@ -81,8 +81,8 @@ humidifier_chip:
     variables:
       - entity: '[[entity]]'
       - icon: mdi:air-humidifier
-      - bg_color_on: "#BEC7EE"
-      - icon_color_on: "#6D81D9"
+      - bg_color_on: rgba(var(--rgb-state-humidifier-color), 0.2)
+      - icon_color_on: rgb(var(--rgb-state-humidifier-color))
 fan_chip:
   card:
     type: custom:decluttering-card
@@ -90,8 +90,8 @@ fan_chip:
     variables:
       - entity: '[[entity]]'
       - icon: mdi:fan
-      - bg_color_on: "#91E7F3"
-      - icon_color_on: "#00BCD4"
+      - bg_color_on: rgba(var(--rgb-state-fan-color), 0.2)
+      - icon_color_on: rgb(var(--rgb-state-fan-color))
 
 universal_remote:
   card:

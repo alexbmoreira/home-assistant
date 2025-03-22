@@ -46,8 +46,8 @@ Google Theme:
       label-badge-yellow: rgb(217, 183, 87)
       label-badge-gray: rgb(95, 98, 103)
       # Cards
-      card-background-color: rgb(255, 255, 255)
-      card-secondary-background-color: rgb(240, 240, 240)
+      card-background-color: rgb(240, 240, 240)
+      card-secondary-background-color: rgb(230, 230, 230)
       ha-card-background: rgb(255, 255, 255)
       ha-card-border-color: rgb(235, 235, 235)
       paper-dialog-background-color: var(--card-background-color)
@@ -96,13 +96,14 @@ Google Theme:
       rgb-primary-color: 32, 33, 36
       rgb-accent-color: 26, 115, 232
       rgb-state-switch-color: var(--rgb-accent-color)
-      rgb-state-light-color: var(--rgb-accent-color)
-      rgb-state-fan-color: var(--rgb-accent-color)
+      rgb-state-light-color: 255, 152, 0
+      rgb-state-fan-color: 76, 175, 80
       rgb-state-script-color: var(--rgb-accent-color)
       rgb-state-vacuum-color: var(--rgb-accent-color)
       rgb-state-remote-color: var(--rgb-accent-color)
+      rgb-state-media-player-color: 63, 81, 181
       rgb-state-input-boolean-color: var(--rgb-accent-color)
-      rgb-state-humidifier-color: var(--rgb-accent-color)
+      rgb-state-humidifier-color: 146, 107, 199
       rgb-state-cover-color: var(--rgb-accent-color)
 
     dark:
@@ -201,11 +202,12 @@ Google Theme:
       rgb-primary-color: 169, 177, 188
       rgb-accent-color: 138, 180, 248
       rgb-state-switch-color: var(--rgb-accent-color)
-      rgb-state-light-color: var(--rgb-accent-color)
-      rgb-state-fan-color: var(--rgb-accent-color)
+      rgb-state-light-color: 255, 152, 0
+      rgb-state-fan-color: 76, 175, 80
       rgb-state-script-color: var(--rgb-accent-color)
       rgb-state-vacuum-color: var(--rgb-accent-color)
       rgb-state-remote-color: var(--rgb-accent-color)
+      rgb-state-media-player-color: 63, 81, 181
       rgb-state-input-boolean-color: var(--rgb-accent-color)
-      rgb-state-humidifier-color: var(--rgb-accent-color)
+      rgb-state-humidifier-color: 146, 107, 199
       rgb-state-cover-color: var(--rgb-accent-color)
