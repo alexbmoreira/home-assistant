@@ -1,5 +1,10 @@
 - platform: group
-  name: "Bedroom Lamps"
+  name: Bedroom Lamps
   entities:
     - light.bedside_lamp_pascale
     - light.bedside_lamp_alex
+- platform: group
+  name: Living Room Lamps
+  entities:
+    - light.globe_light
+    - light.couch_lamp
