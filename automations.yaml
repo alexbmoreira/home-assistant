@@ -149,3 +149,39 @@
     target:
       entity_id: media_player.plex_shield
   mode: single
+- id: '1742764975788'
+  alias: Bedroom Humidifier On
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.bedroom_climate_sensor_humidity
+    below: 35
+  conditions: []
+  actions:
+  - action: humidifier.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: humidifier.bedroom_humidifier
+  mode: single
+- id: '1743083579481'
+  alias: Bedroom Humidifier Off
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.bedroom_climate_sensor_humidity
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+    above: 45
+  conditions: []
+  actions:
+  - action: humidifier.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: humidifier.bedroom_humidifier
+  mode: single
