@@ -47,6 +47,12 @@ lovelace:
       type: module
     - url: /hacsfiles/android-tv-card/universal-remote-card.min.js
       type: module
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module
+    - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
+      type: module
+    - url: /hacsfiles/lovelace-layout-card/layout-card.js
+      type: module
   dashboards:
     desktop-home:
       mode: yaml

@@ -116,7 +116,6 @@ living_room_page:
             border: none;
           }
 
-
 kitchen_page:
   card:
     type: vertical-stack
@@ -238,9 +237,6 @@ bedroom_page:
               border: none;
             }
 
-
-
-
 bathroom_page:
   card:
     type: vertical-stack
@@ -264,7 +260,6 @@ bathroom_page:
               border: none;
             }
 
-
 office_page:
   card:
     type: vertical-stack
@@ -277,7 +272,7 @@ office_page:
           - type: custom:mushroom-light-card
             show_brightness_control: true
             show_color_control: true
-            use_light_color: true
+            use_light_colo r: true
             collapsible_controls: false
             layout: horizontal
             icon: mdi:desk-lamp
@@ -288,4 +283,38 @@ office_page:
               background: none;
               border: none;
             }
+      - type: entities
+        title: Beelink Server
+        icon: mdi:server
+        show_header_toggle: false
+        entities:
+          - type: custom:mushroom-entity-card
+            entity: sensor.beelink_core_0_temperature
+            name: CPU Temperature
+            icon_color: primary
+          - type: custom:mushroom-entity-card
+            entity: sensor.beelink_containers_active
+            name: Active Docker Containers
+            icon_color: primary
+          - type: custom:mushroom-entity-card
+            entity: sensor.beelink_cpu_usage
+            name: CPU Usage
+            icon_color: primary
+            icon: phu:intel-cpu
+          - type: custom:mushroom-entity-card
+            entity: sensor.beelink_memory_usage
+            name: Memory Usage
+            icon_color: primary
+            icon: fas:memory
+          - type: custom:mushroom-entity-card
+            entity: sensor.radarr_disk_space_movies
+            name: Seagate Disk Space
+            icon_color: primary
+        card_mod:
+          style: |
+            ha-card {
+              background: none;
+              border: none;
+            }
+
 
