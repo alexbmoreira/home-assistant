@@ -317,4 +317,28 @@ office_page:
               border: none;
             }
 
+balcony_page:
+  card:
+    type: vertical-stack
+    cards:
+      - type: entities
+        title: Lights
+        icon: mdi:lightbulb-group
+        show_header_toggle: false
+        entities:
+          - type: custom:mushroom-light-card
+            show_brightness_control: true
+            show_color_control: true
+            use_light_colo r: true
+            collapsible_controls: false
+            layout: horizontal
+            icon: phu:light-string
+            entity: light.balcony_lights
+        card_mod:
+          style: |
+            ha-card {
+              background: none;
+              border: none;
+            }
+
 

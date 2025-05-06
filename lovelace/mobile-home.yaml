@@ -198,8 +198,13 @@ views:
                       - icon: mdi:desktop-classic
                       - template: office_chips
                       - tap_path: office
-                  - type: grid
-                    cards: []
+                  - type: custom:decluttering-card
+                    template: room_card
+                    variables:
+                      - name: Balcony
+                      - icon: mdi:balcony
+                      - template: balcony_chips
+                      - tap_path: balcony
   - type: sections
     max_columns: 1
     subview: true
@@ -250,3 +255,13 @@ views:
         variables:
           - name: Office
           - template: office_page
+  - type: sections
+    max_columns: 1
+    subview: true
+    path: balcony
+    sections:
+      - type: custom:decluttering-card
+        template: room_page
+        variables:
+          - name: Balcony
+          - template: balcony_page

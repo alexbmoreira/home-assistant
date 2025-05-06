@@ -118,3 +118,23 @@ office_chips:
         variables:
           - entity: light.office_lamp
           - icon: mdi:desk-lamp
+balcony_chips:
+  card:
+    type: grid
+    columns: 3
+    cards:
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: grid
+        cards: []
+      - type: custom:decluttering-card
+        template: light_chip
+        variables:
+          - entity: light.balcony_lights
+          - icon: phu:light-string
