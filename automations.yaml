@@ -185,3 +185,28 @@
     target:
       entity_id: humidifier.bedroom_humidifier
   mode: single
+- id: '1745644359091'
+  alias: Toronto Maple Leafs Goal
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.toronto_maple_leafs
+    - sensor.montreal_canadiens
+    attribute: team_score
+  conditions:
+  - condition: template
+    value_template: '{{ trigger.from_state.attributes.team_score|int < trigger.to_state.attributes.team_score|int
+      }}'
+    enabled: true
+  actions:
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 25
+      milliseconds: 0
+    enabled: true
+  - action: script.goal_light
+    metadata: {}
+    data: {}
+  mode: single
