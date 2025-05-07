@@ -155,7 +155,7 @@ goal_light:
     action: scene.create
   - alias: Flash 3 times
     repeat:
-      count: 8
+      count: 5
       sequence:
       - data:
           entity_id:
@@ -180,5 +180,9 @@ goal_light:
       entity_id: scene.before_flash
     action: scene.turn_on
     data: {}
+  - alias: Delete state scene
+    action: scene.delete
+    data:
+      entity_id: scene.before_flash
   alias: Goal Light
   icon: mdi:alarm-light
