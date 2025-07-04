@@ -192,7 +192,6 @@
   - trigger: state
     entity_id:
     - sensor.toronto_maple_leafs
-    - sensor.montreal_canadiens
     attribute: team_score
   conditions:
   - condition: template
@@ -203,10 +202,14 @@
   - delay:
       hours: 0
       minutes: 0
-      seconds: 25
+      seconds: 20
       milliseconds: 0
-    enabled: true
+    enabled: false
   - action: script.goal_light
+    metadata: {}
+    data: {}
+    enabled: false
+  - action: script.goal_light_leds
     metadata: {}
     data: {}
   mode: single

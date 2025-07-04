@@ -61,6 +61,15 @@ living_room_page:
           layout: horizontal
           icon: mdi:lamps
           entity: light.living_room_lamps
+        - type: divider
+        - type: custom:mushroom-light-card
+          show_brightness_control: true
+          show_color_control: true
+          use_light_color: true
+          collapsible_controls: false
+          layout: horizontal
+          icon: mdi:led-strip-variant
+          entity: light.tv_leds
       card_mod:
         style: |
           ha-card {

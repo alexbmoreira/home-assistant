@@ -5,8 +5,6 @@ living_room_chips:
     cards:
       - type: grid
         cards: []
-      - type: grid
-        cards: []
       - type: custom:decluttering-card
         template: television_chip
         variables:
@@ -14,6 +12,11 @@ living_room_chips:
           - entity: media_player.shield
           - remote: remote.shield
           - keyboard: remote.shield_adb
+      - type: custom:decluttering-card
+        template: light_chip
+        variables:
+          - entity: light.tv_leds
+          - icon: mdi:led-strip-variant
       - type: custom:decluttering-card
         template: speaker_chip
         variables:
