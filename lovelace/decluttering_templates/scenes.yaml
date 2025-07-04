@@ -52,6 +52,26 @@ scene_list:
             secondary_info: none
             entity: script.dinner_time
 
+order_tracking:
+  card:
+    type: vertical-stack
+    cards:
+      - type: custom:mushroom-entity-card
+        entity: sensor.17track_in_transit
+        name: In Transit
+        icon: mdi:truck
+        icon_color: primary
+      - type: custom:mushroom-entity-card
+        entity: sensor.17track_delivered
+        name: Delivered
+        icon: mdi:package-check
+        icon_color: primary
+      - type: custom:mushroom-entity-card
+        entity: sensor.17track_undelivered
+        name: Not Delivered
+        icon: mdi:alert
+        icon_color: primary
+
 scenes:
   card:
     type: horizontal-stack
@@ -66,8 +86,16 @@ scenes:
           - type: custom:decluttering-card
             template: scene_chip
             variables:
-              - entity: script.dinner_time
-              - icon: mdi:food-drumstick
+              - icon: mdi:package
+              - action:
+                  action: fire-dom-event
+                  browser_mod:
+                    service: popup
+                    data:
+                      title: Order Tracking
+                      content:
+                        type: custom:decluttering-card
+                        template: order_tracking
       - type: vertical-stack
         cards:
           - type: custom:decluttering-card
@@ -80,7 +108,7 @@ scenes:
           - type: custom:decluttering-card
             template: scene_chip
             variables:
-              - icon: mdi:dots-horizontal
+              - icon: mdi:palette
               - action:
                   action: fire-dom-event
                   browser_mod:
