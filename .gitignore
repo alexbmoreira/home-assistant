@@ -1,7 +1,10 @@
 *
 !*.yaml
 !.gitignore
-!*.md
+!**/*.md
+
+!themes/*
+!lovelace/*
 
 .storage
 .cloud
