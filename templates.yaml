@@ -1,0 +1,4 @@
+- sensor:
+    - name: "Problem Plants"
+      state: >-
+        {{ states.plant | selectattr('state', 'eq', 'problem') | list | count }}

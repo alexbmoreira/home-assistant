@@ -5,106 +5,15 @@ kiosk_mode:
 views:
   - title: Home
     type: sections
+    path: home
     max_columns: 1
     sections:
+      - type: custom:decluttering-card
+        template: navbar
       - type: grid
         cards:
-          - type: custom:button-card
-            show_entity_picture: false
-            show_icon: false
-            show_label: true
-            entity: |
-              [[[
-                return "person." + user.name.toLowerCase();
-              ]]]
-            name: '[[[return "Hello, " + user.name +"!"]]]'
-            label: |
-              [[[
-                if (entity.state == "home") return "Welcome home.";
-                else return "See you later.";
-              ]]]
-            tap_action:
-              action: navigate
-              navigation_path: settings
-            state_not:
-              - value: home
-                styles:
-                  entity_picture:
-                    - filter: grayscale(100%)
-            custom_fields:
-              pic:
-                card:
-                  type: custom:button-card
-                  entity: |
-                    [[[
-                      return entity.entity_id;
-                    ]]]
-                  show_name: false
-                  show_entity_picture: true
-                  state:
-                    - value: not_home
-                      styles:
-                        entity_picture:
-                          - filter: grayscale(100%)
-                  styles:
-                    card:
-                      - background: none
-                      - box-shadow: none
-                      - border: none
-                    entity_picture:
-                      - width: 40px
-                      - height: 40px
-                      - border-radius: 10px
-              one:
-                card:
-                  type: custom:button-card
-                  entity: |
-                    [[[
-                      if (user.name == "Alex") return "person.pascale";
-                      else return "person.alex";
-                    ]]]
-                  show_name: false
-                  show_entity_picture: true
-                  state_not:
-                    - value: home
-                      styles:
-                        entity_picture:
-                          - filter: grayscale(100%)
-                          - opacity: 0.5
-                  styles:
-                    card:
-                      - background: none
-                      - box-shadow: none
-                      - border: none
-                    entity_picture:
-                      - width: 40px
-                      - height: 40px
-                      - border-radius: 10px
-            styles:
-              card:
-                - background: none
-                - box-shadow: none
-                - border: none
-              grid:
-                - grid-template-areas: '"pic n one" "pic l one"'
-                - grid-template-rows: min-content min-content min-content
-                - grid-template-columns: 50px 1fr 50px
-                - grid-column-gap: 12px
-              name:
-                - justify-self: start
-                - align-self: center
-                - font-weight: 700
-                - font-size: 15px
-              label:
-                - justify-self: start
-                - align-self: start
-                - font-size: 12px
-                - font-weight: 500
-                - color: var(--secondary-text-color)
-              entity_picture:
-                - width: 40px
-                - height: 40px
-                - border-radius: 12px
+          - type: custom:decluttering-card
+            template: header
           - type: custom:button-card
             custom_fields:
               weather:
@@ -265,3 +174,21 @@ views:
         variables:
           - name: Balcony
           - template: balcony_page
+  - type: sections
+    max_columns: 1
+    subview: true
+    path: lights
+    sections:
+      - type: custom:decluttering-card
+        template: navbar
+      - type: custom:decluttering-card
+        template: lights
+  - type: sections
+    max_columns: 1
+    subview: true
+    path: plants
+    sections:
+      - type: custom:decluttering-card
+        template: navbar
+      - type: custom:decluttering-card
+        template: plants

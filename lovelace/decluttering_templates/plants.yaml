@@ -1,0 +1,40 @@
+plants:
+  card:
+    type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: header
+      - type: entities
+        title: Bird Cam
+        icon: mdi:bird
+        show_header_toggle: false
+        entities:
+          - type: custom:advanced-camera-card
+            cameras:
+              - camera_entity: camera.bird_cam_hd_stream
+        card_mod:
+          style: |
+            ha-card {
+              background: none;
+              border: none;
+            }
+      - type: entities
+        title: Plants
+        icon: mdi:sprout
+        show_header_toggle: false
+        entities:
+          - type: custom:flower-card
+            entity: plant.pothos
+            battery_sensor: sensor.myflower_battery
+            show_bars:
+              - moisture
+              - temperature
+              - conductivity
+              - illuminance
+            display_type: compact
+        card_mod:
+          style: |
+            ha-card {
+              background: none;
+              border: none;
+            }

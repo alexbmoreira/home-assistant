@@ -25,6 +25,13 @@ spotcast:
 
 lovelace:
   mode: yaml
+  dashboards:
+    mobile-home:
+      mode: yaml
+      filename: lovelace/mobile-home.yaml
+      title: Home
+      icon: mdi:home
+      show_in_sidebar: false
   resources:
     - url: /hacsfiles/lovelace-mushroom/mushroom.js
       type: module
@@ -54,16 +61,8 @@ lovelace:
       type: module
     - url: /hacsfiles/lovelace-layout-card/layout-card.js
       type: module
-  dashboards:
-    desktop-home:
-      mode: yaml
-      filename: lovelace/desktop-home.yaml
-      title: Home
-      icon: mdi:home
-      show_in_sidebar: true
-    mobile-home:
-      mode: yaml
-      filename: lovelace/mobile-home.yaml
-      title: Home
-      icon: mdi:home
-      show_in_sidebar: false
+    - url: /hacsfiles/lovelace-navbar-card/navbar-card.js
+      type: module
+    - url: /hacsfiles/advanced-camera-card/advanced-camera-card.js
+      type: module
+

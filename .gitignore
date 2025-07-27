@@ -1,10 +1,11 @@
 *
-!*.yaml
 !.gitignore
+!**/*.yaml
 !**/*.md
 
 !themes/*
-!lovelace/*
+!lovelace/
+!lovelace/**/*
 
 .storage
 .cloud

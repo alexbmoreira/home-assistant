@@ -1,0 +1,22 @@
+navbar:
+  card:
+    type: custom:navbar-card
+    routes:
+      - url: /mobile-home/home
+        icon: mdi:home
+        label: Home
+      - url: /mobile-home/lights
+        icon: mdi:lightbulb
+        label: Lights
+      - url: /mobile-home/plants
+        icon: mdi:sprout
+        label: Plants
+        badge:
+          show: |
+            [[[ return states['sensor.problem_plants'].state > 0 ]]]
+          count: |
+            [[[ return states['sensor.problem_plants'].state ]]]
+    styles: |
+      .navbar.mobile {
+        padding-bottom: 30px;
+      }
