@@ -2,6 +2,7 @@ device_chip:
   default:
     - tap_action:
         action: toggle
+    - on_state: "on"
   card:
     type: custom:button-card
     entity: '[[entity]]'
@@ -12,7 +13,7 @@ device_chip:
       action: more-info
     icon: '[[icon]]'
     state:
-      - value: "on"
+      - value: '[[on_state]]'
         styles:
           card:
             - background: '[[bg_color_on]]'
@@ -39,8 +40,11 @@ speaker_chip:
     variables:
       - entity: '[[entity]]'
       - icon: mdi:speaker
+      - on_state: playing
       - bg_color_on: rgba(var(--rgb-state-media-player-color), 0.2)
       - icon_color_on: rgb(var(--rgb-state-media-player-color))
+      - tap_action:
+          action: more-info
 television_chip:
   card:
     type: custom:decluttering-card
