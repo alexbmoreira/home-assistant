@@ -186,12 +186,16 @@
       entity_id: humidifier.bedroom_humidifier
   mode: single
 - id: '1745644359091'
-  alias: Toronto Maple Leafs Goal
+  alias: Leafs/Jays Score
   description: ''
   triggers:
   - trigger: state
     entity_id:
     - sensor.toronto_maple_leafs
+    attribute: team_score
+  - trigger: state
+    entity_id:
+    - sensor.toronto_blue_jays
     attribute: team_score
   conditions:
   - condition: template
