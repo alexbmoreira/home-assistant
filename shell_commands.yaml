@@ -1,0 +1,1 @@
+save_bird_image: cp /config/www/images/birdfeeder/bird.jpg "/config/www/images/birdfeeder/birds/bird_{{ now().strftime('%Y-%m-%dT%H:%M:%S') }}.jpg"

@@ -16,6 +16,7 @@ scene: !include scenes.yaml
 script: !include scripts.yaml
 switch: !include switches.yaml
 template: !include templates.yaml
+shell_command: !include shell_commands.yaml
 
 spotcast:
   sp_dc: !secret spotify_sp_dc
