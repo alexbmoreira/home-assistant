@@ -278,3 +278,24 @@
     - action: shell_command.save_bird_image
       data: {}
   mode: single
+- id: '1753672463288'
+  alias: Plant Problem
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.problem_plants
+  conditions:
+  - condition: template
+    value_template: '{{ trigger.to_state.state | int > trigger.from_state.state |
+      int }}'
+  actions:
+  - variables:
+      newly_problematic: "{% set plants = states.plant \n  | selectattr('state', 'equalto',
+        'problem') \n  | sort(attribute='last_changed', reverse=true) \n  | list %}\n{{
+        plants[0].name if plants else None }}\n"
+  - action: notify.mobile_app_alexs_iphone
+    data:
+      title: House Plant Needs Attention
+      message: '{{ newly_problematic }} needs attention!'
+  mode: single
