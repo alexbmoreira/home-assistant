@@ -248,29 +248,6 @@
       expose_images: false
       provider: 01K0NKGF7HGJ4EXN92T6MVNW0C
       message: 'You will identify images of bird(s) and give their species and sometimes
-        gender based on the image. Your response to this message should be a json
-        object (NOT a string) structured like so:
-
-        { "gender": gender, "species": species, "article": article }.
-
-
-        If gender is unknown make it null. If species is unknown make it "bird" (case
-        sensitive). The article will be the indefinite article "a" or "an" based on
-        what is correct if it were read as "A {gender} {species}" (gender is omitted
-        if null, species is ''bird'' if null). Say nothing else. Here is the image:'
-      image_file: /config/www/images/test/bird.jpg
-    response_variable: response
-    enabled: false
-  - action: llmvision.image_analyzer
-    metadata: {}
-    data:
-      include_filename: false
-      target_width: 1280
-      max_tokens: 100
-      generate_title: false
-      expose_images: false
-      provider: 01K0NKGF7HGJ4EXN92T6MVNW0C
-      message: 'You will identify images of bird(s) and give their species and sometimes
         gender based on the image. Respond, without quotes, with the following and
         ONLY the following. Sub in values to the {} denoted fields.  Articles and
         sentence grammar should remain correct, but otherwise keep the sentence the
