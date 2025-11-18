@@ -186,7 +186,7 @@
       entity_id: humidifier.bedroom_humidifier
   mode: single
 - id: '1745644359091'
-  alias: Leafs/Jays Score
+  alias: Toronto Maple Leafs Score
   description: ''
   triggers:
   - trigger: state
@@ -200,7 +200,7 @@
   conditions:
   - condition: template
     value_template: '{{ trigger.from_state.attributes.team_score|int < trigger.to_state.attributes.team_score|int
-      }}'
+      and trigger.from_state.attributes.season != "preseason" }}'
     enabled: true
   actions:
   - delay:
@@ -249,27 +249,29 @@
       provider: 01K0NKGF7HGJ4EXN92T6MVNW0C
       message: 'You will identify images of bird(s) and give their species and sometimes
         gender based on the image. Respond, without quotes, with the following and
-        ONLY the following. Sub in values to the {} denoted fields.  Articles and
-        sentence grammar should remain correct, but otherwise keep the sentence the
-        same:
+        ONLY the following. Sub in values to the {} denoted fields. Articles and sentence
+        grammar should remain correct, but otherwise keep the sentence the same:
 
 
         "A {gender} {species} is eating on the balcony!"
 
 
-        If gender is unknown, omit the gender entirely. If species is unknown, just
-        say "A bird is eating on the balcony!"
-
-
-        If the image is not of a bird, simply respond (without quotes) "not_bird"'
+        If gender is unknown, omit the gender entirely. If species is unknown, or
+        if the image is not of a bird, simply respond (without quotes) "not_bird"
+        and do not say anything else.'
       image_file: /config/www/images/birdfeeder/bird.jpg
-      model: gemini-2.0-flash
     response_variable: response
   - if:
     - condition: template
       value_template: '{{ response.response_text != "not_bird" }}'
     then:
     - action: notify.mobile_app_alexs_iphone
+      data:
+        message: '{{response.response_text}}'
+        title: Balcony Camera
+        data:
+          image: https://home.casamoreira.xyz/local/images/birdfeeder/bird.jpg
+    - action: notify.mobile_app_pascales_iphone
       data:
         message: '{{response.response_text}}'
         title: Balcony Camera
@@ -298,4 +300,22 @@
     data:
       title: House Plant Needs Attention
       message: '{{ newly_problematic }} needs attention!'
+  mode: single
+- id: '1758843067905'
+  alias: Toronto Blue Jays Score
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.toronto_blue_jays
+    attribute: team_score
+  conditions:
+  - condition: template
+    value_template: '{{ trigger.from_state.attributes.team_score|int < trigger.to_state.attributes.team_score|int
+      and trigger.from_state.attributes.season != "preseason" }}'
+    enabled: true
+  actions:
+  - action: script.goal_light_leds
+    metadata: {}
+    data: {}
   mode: single

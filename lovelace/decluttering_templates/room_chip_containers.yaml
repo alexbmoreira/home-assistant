@@ -13,10 +13,9 @@ living_room_chips:
           - remote: remote.shield
           - keyboard: remote.shield_adb
       - type: custom:decluttering-card
-        template: light_chip
+        template: tv_led_chip
         variables:
           - entity: light.tv_leds
-          - icon: mdi:led-strip-variant
       - type: custom:decluttering-card
         template: speaker_chip
         variables:

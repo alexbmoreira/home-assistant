@@ -109,3 +109,46 @@
     media_player.bedroom_display:
       entity_only: true
   icon: mdi:food-drumstick
+- id: '1757562217146'
+  name: Morning
+  entities:
+    media_player.bedroom_display:
+      friendly_name: Bedroom Display
+      supported_features: 152461
+      state: 'off'
+    fan.bedroom_fan:
+      friendly_name: Bedroom Fan
+      supported_features: 48
+      state: 'off'
+  icon: fas:sun
+  metadata: {}
+- id: '1757562605318'
+  name: Bedtime
+  entities:
+    media_player.bedroom_display:
+      friendly_name: Bedroom Display
+      supported_features: 152461
+      volume_level: 0.49999237060546875
+      is_volume_muted: false
+      media_content_type: music
+      media_position_updated_at: '2025-09-11T03:47:35.214298+00:00'
+      app_id: 9731D581
+      app_name: Relaxing Sounds
+      entity_picture_local: /api/media_player_proxy/media_player.bedroom_display?token=c94394e9f929c11ecf8b7801b870487d0d2634ffcc3761db0cbac54dceeff971&cache=67bb5aa233c9d830
+      media_content_id: https://storage.googleapis.com/relaxation-sounds/rain_3600.mp3
+      media_position: 0
+      media_title: Rain sounds
+      media_artist: The tranquil sounds of the rain
+      entity_picture: https://www.gstatic.com/voice_delight/images/relaxation_sounds/icons/rain.png
+      media_duration: 3600.073313
+      state: playing
+    fan.bedroom_fan:
+      friendly_name: Bedroom Fan
+      supported_features: 48
+      state: 'on'
+  icon: mdi:bed
+  metadata:
+    media_player.bedroom_display:
+      entity_only: true
+    fan.bedroom_fan:
+      entity_only: true

@@ -1,3 +1,38 @@
+pic:
+  card:
+    type: custom:button-card
+    entity: '[[entity]]'
+    show_name: false
+    show_label: '[[show_label]]'
+    show_entity_picture: true
+    label: |
+      [[[
+        return entity.state == "home" ? "Home" : "Away";
+      ]]]
+    state_not:
+      - value: home
+        styles:
+          entity_picture:
+            - filter: grayscale(100%)
+            - opacity: 0.5
+    styles:
+      card:
+        - background: none
+        - box-shadow: none
+        - border: none
+      entity_picture:
+        - width: 40px
+        - height: 40px
+        - border-radius: 10px
+      label:
+        - position: absolute
+        - bottom: 2px
+        - font-size: 8px
+        - background: var(--card-background-color)
+        - width: 40px
+        - border-radius: 0px 0px 10px 10px
+        - opacity: 70%
+
 header:
   card:
     type: custom:button-card
@@ -8,7 +43,7 @@ header:
       [[[
         return "person." + user.name.toLowerCase();
       ]]]
-    name: '[[[return "Hello, " + user.name +"!"]]]'
+    name: '[[[return "Hello, " + user.name + "!"]]]'
     label: |
       [[[
         if (entity.state == "home") return "Welcome home.";
@@ -48,29 +83,15 @@ header:
               - border-radius: 10px
       one:
         card:
-          type: custom:button-card
-          entity: |
-            [[[
-              if (user.name == "Alex") return "person.pascale";
-              else return "person.alex";
-            ]]]
-          show_name: false
-          show_entity_picture: true
-          state_not:
-            - value: home
-              styles:
-                entity_picture:
-                  - filter: grayscale(100%)
-                  - opacity: 0.5
-          styles:
-            card:
-              - background: none
-              - box-shadow: none
-              - border: none
-            entity_picture:
-              - width: 40px
-              - height: 40px
-              - border-radius: 10px
+          type: custom:decluttering-card
+          template: pic
+          variables:
+            - show_label: true
+            - entity: |
+                [[[
+                  if (user.name == "Alex") return "person.pascale";
+                  else return "person.alex";
+                ]]]
     styles:
       card:
         - background: none

@@ -144,48 +144,6 @@ launch_apollo_tv:
       entity_id: media_player.shield
   alias: Launch Apollo TV
   description: ''
-goal_light:
-  sequence:
-  - alias: Save current state
-    data:
-      scene_id: before_flash
-      snapshot_entities:
-      - light.globe_light
-      - light.couch_lamp
-    action: scene.create
-  - alias: Flash 3 times
-    repeat:
-      count: 5
-      sequence:
-      - data:
-          entity_id:
-          - light.globe_light
-          - light.couch_lamp
-          color_name: red
-          brightness: 255
-        action: light.turn_on
-      - delay: 0.6
-      - data:
-          entity_id:
-          - light.globe_light
-          - light.couch_lamp
-          color_name: red
-          brightness: 200
-        action: light.turn_on
-      - delay: 0.6
-  - alias: Wait for flash to finish
-    delay: 2
-  - alias: Restore previous state
-    target:
-      entity_id: scene.before_flash
-    action: scene.turn_on
-    data: {}
-  - alias: Delete state scene
-    action: scene.delete
-    data:
-      entity_id: scene.before_flash
-  alias: Goal Light
-  icon: mdi:alarm-light
 goal_light_leds:
   sequence:
   - alias: Save current state
@@ -202,8 +160,8 @@ goal_light_leds:
       entity_id: light.tv_leds
     data:
       brightness: 128
-      color_name: red
       effect: Lighthouse
+      color_name: red
   - action: number.set_value
     metadata: {}
     data:

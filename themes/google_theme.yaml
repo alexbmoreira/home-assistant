@@ -92,6 +92,7 @@ Google Theme:
       input-idle-line-color: var(--primary-text-color)
       input-hover-line-color: var(--accent-color)
       #RGB
+      rgb-card-background-color: 240, 240, 240
       rgb-primary-text-color: 32, 33, 36
       rgb-primary-color: 32, 33, 36
       rgb-accent-color: 26, 115, 232
@@ -198,6 +199,7 @@ Google Theme:
       input-idle-line-color: var(--primary-text-color)
       input-hover-line-color: var(--accent-color)
       #RGB
+      rgb-card-background-color: 32, 33, 36
       rgb-primary-text-color: 169, 177, 188
       rgb-primary-color: 169, 177, 188
       rgb-accent-color: 138, 180, 248

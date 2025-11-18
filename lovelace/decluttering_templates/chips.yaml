@@ -78,6 +78,29 @@ light_chip:
       - icon: '[[icon]]'
       - bg_color_on: rgba(var(--rgb-state-light-color), 0.2)
       - icon_color_on: rgb(var(--rgb-state-light-color))
+tv_led_chip:
+  default:
+    - icon: mdi:led-strip-variant
+  card:
+    type: custom:decluttering-card
+    template: device_chip
+    variables:
+      - entity: '[[entity]]'
+      - icon: '[[icon]]'
+      - bg_color_on: rgba(var(--rgb-state-light-color), 0.2)
+      - icon_color_on: rgb(var(--rgb-state-light-color))
+      - tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id:
+              - light.tv_leds
+          data:
+            rgb_color:
+              - 255
+              - 254
+              - 221
+            effect: Solid
 humidifier_chip:
   card:
     type: custom:decluttering-card
